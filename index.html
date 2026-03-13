@@ -44,6 +44,8 @@
         .bento-card.accent-cyan:hover::before { background: #22D3EE; }
         .skill-tag { background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.2); transition: all 0.3s; }
         .skill-tag:hover { background: rgba(99, 102, 241, 0.3); border-color: #6366F1; }
+        .skill-tag-highlight { background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.4); color: #22D3EE; }
+        .skill-tag-highlight:hover { background: rgba(34, 211, 238, 0.2); box-shadow: 0 0 10px rgba(34, 211, 238, 0.3); }
         .timeline-line { background: linear-gradient(to bottom, transparent, #6366F1, transparent); }
     </style>
 </head>
@@ -51,7 +53,7 @@
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 px-6 md:px-12 flex justify-between items-center">
-        <div class="font-display font-bold text-xl tracking-tighter text-white">ANUSHA<span class="text-ai-indigo"></span></div>
+        <div class="font-display font-bold text-xl tracking-tighter text-white">ANUSHA<span class="text-ai-indigo">.</span></div>
         <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
             <a href="#about" class="hover:text-ai-indigo transition-colors uppercase tracking-widest text-xs">About</a>
             <a href="#experience" class="hover:text-ai-indigo transition-colors uppercase tracking-widest text-xs">Experience</a>
@@ -59,6 +61,9 @@
             <a href="#contact" class="hover:text-ai-indigo transition-colors uppercase tracking-widest text-xs">Contact</a>
         </div>
         <div class="flex items-center space-x-4">
+            <a href="https://github.com/anusha-sundaramurthi" target="_blank" class="text-slate-400 hover:text-white transition-colors hidden sm:block">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+            </a>
             <a href="#contact" class="bg-ai-indigo hover:bg-indigo-500 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all">Hire Me</a>
         </div>
     </nav>
@@ -89,76 +94,162 @@
     <section id="about" class="py-32 px-6 md:px-12 max-w-7xl mx-auto">
         <div class="mb-16 reveal">
             <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Core Competencies</h2>
-            <div class="h-1 w-20 bg-ai-indigo"></div>
+            <p class="text-slate-500 uppercase tracking-widest text-xs">Architecting intelligent systems from backend to inference</p>
+            <div class="h-1 w-20 bg-ai-indigo mt-6"></div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Large Card -->
-            <div class="md:col-span-2 bento-card p-8 rounded-3xl reveal" style="transition-delay: 100ms;">
-                <h3 class="text-xl font-display font-bold text-white mb-4">Engineering Philosophy</h3>
-                <p class="text-slate-400 leading-relaxed mb-6">
-                    I specialize in Natural Language Processing and Generative AI, focusing on production-ready systems using transformer architectures. My expertise lies in implementing end-to-end NLP pipelines and deploying high-performance inference APIs using FastAPI, consistently achieving 20% improvements in model precision through rigorous evaluation.
+            <!-- Large Card: Engineering Philosophy & Highlighted Skills -->
+            <div class="md:col-span-3 lg:col-span-2 bento-card p-8 rounded-3xl reveal" style="transition-delay: 100ms;">
+                <h3 class="text-xl font-display font-bold text-white mb-4">AI Engineering Profile</h3>
+                <p class="text-slate-400 leading-relaxed mb-8">
+                    I specialize in Natural Language Processing and Generative AI, focusing on production-ready systems using transformer architectures. My expertise lies in implementing end-to-end NLP pipelines, building multimodal agents, and deploying high-performance inference APIs using FastAPI, consistently achieving significant improvements in model precision through rigorous evaluation-driven development.
                 </p>
+                <div class="mb-2 text-xs uppercase tracking-widest text-slate-500 font-bold">Core Engineering Stack</div>
                 <div class="flex flex-wrap gap-3">
-                    <span class="skill-tag px-4 py-2 rounded-full text-xs font-semibold text-white">LangChain</span>
-                    <span class="skill-tag px-4 py-2 rounded-full text-xs font-semibold text-white">LangGraph</span>
-                    <span class="skill-tag px-4 py-2 rounded-full text-xs font-semibold text-white">Transformers</span>
-                    <span class="skill-tag px-4 py-2 rounded-full text-xs font-semibold text-white">Vector Embedding</span>
-                    <span class="skill-tag px-4 py-2 rounded-full text-xs font-semibold text-white">Semantic Search</span>
-                    <span class="skill-tag px-4 py-2 rounded-full text-xs font-semibold text-white">LLMs</span>
+                    <span class="skill-tag skill-tag-highlight px-4 py-2 rounded-full text-xs font-bold transition-all">Natural Language Processing (NLP)</span>
+                    <span class="skill-tag skill-tag-highlight px-4 py-2 rounded-full text-xs font-bold transition-all">Generative AI</span>
+                    <span class="skill-tag skill-tag-highlight px-4 py-2 rounded-full text-xs font-bold transition-all">LangChain & LangGraph</span>
+                    <span class="skill-tag skill-tag-highlight px-4 py-2 rounded-full text-xs font-bold transition-all">PyTorch</span>
+                    <span class="skill-tag skill-tag-highlight px-4 py-2 rounded-full text-xs font-bold transition-all">FastAPI</span>
+                    <span class="skill-tag skill-tag-highlight px-4 py-2 rounded-full text-xs font-bold transition-all">Large Language Models (LLMs)</span>
                 </div>
             </div>
 
-            <!-- Small Card -->
-            <div class="bento-card p-8 rounded-3xl reveal" style="transition-delay: 200ms;">
-                <h3 class="text-xl font-display font-bold text-white mb-4">Programming</h3>
-                <div class="space-y-4">
-                    <div class="flex justify-between items-center text-sm">
-                        <span>Python (Advanced)</span>
-                        <span class="text-ai-indigo">95%</span>
+            <!-- Small Card: Programming Languages -->
+            <div class="md:col-span-3 lg:col-span-1 bento-card p-8 rounded-3xl reveal" style="transition-delay: 200ms;">
+                <h3 class="text-xl font-display font-bold text-white mb-6">Languages</h3>
+                <div class="space-y-5">
+                    <div>
+                        <div class="flex justify-between items-center text-sm mb-2">
+                            <span class="font-medium">Python (Advanced)</span>
+                            <span class="text-ai-indigo font-bold">95%</span>
+                        </div>
+                        <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-ai-indigo w-[95%]"></div>
+                        </div>
                     </div>
-                    <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                        <div class="h-full bg-ai-indigo w-[95%]"></div>
+                    <div>
+                        <div class="flex justify-between items-center text-sm mb-2">
+                            <span class="font-medium">C / C++</span>
+                            <span class="text-neon-cyan font-bold">85%</span>
+                        </div>
+                        <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-neon-cyan w-[85%]"></div>
+                        </div>
                     </div>
-                    <div class="flex justify-between items-center text-sm">
-                        <span>JavaScript</span>
-                        <span class="text-neon-cyan">80%</span>
-                    </div>
-                    <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                        <div class="h-full bg-neon-cyan w-[80%]"></div>
+                    <div>
+                        <div class="flex justify-between items-center text-sm mb-2">
+                            <span class="font-medium">JavaScript</span>
+                            <span class="text-indigo-400 font-bold">80%</span>
+                        </div>
+                        <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-indigo-400 w-[80%]"></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Skills List Grid -->
-            <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Skills List Grid (Comprehensive) -->
+            <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
+                
+                <!-- AI / ML Frameworks -->
+                <div class="bento-card p-6 rounded-3xl reveal" style="transition-delay: 100ms;">
+                    <div class="text-ai-indigo mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.628.283a2 2 0 01-1.186.12l-2.733-.54a2 2 0 01-1.627-1.627l-.54-2.733a2 2 0 00-.12-1.186l-.283-.628a6 6 0 00-.517-3.86l-.477-2.387a2 2 0 00-.547-1.022L1.5 1.5"></path></svg>
+                    </div>
+                    <h4 class="text-white font-bold mb-3">AI & ML Frameworks</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">PyTorch</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">TensorFlow</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Hugging Face</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">spaCy</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Scikit-learn</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">FAISS</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Pandas</span>
+                    </div>
+                </div>
+
+                <!-- Generative AI & NLP -->
+                <div class="bento-card p-6 rounded-3xl reveal" style="transition-delay: 200ms;">
+                    <div class="text-neon-cyan mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h4 class="text-white font-bold mb-3">Gen AI & NLP Tech</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Diffusion Models</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">U-Net / DiT</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Text Classification</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">NER</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Embeddings</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Semantic Similarity</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Whisper</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">BERT / Gemma</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Claude API</span>
+                    </div>
+                </div>
+
+                <!-- Backend & Deployment -->
                 <div class="bento-card p-6 rounded-3xl reveal" style="transition-delay: 300ms;">
                     <div class="text-ai-indigo mb-4">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
                     </div>
-                    <h4 class="text-white font-bold mb-2">AI Frameworks</h4>
-                    <p class="text-slate-500 text-xs leading-relaxed">LangGraph, LangChain, PyTorch, Hugging Face, spaCy, Scikit-learn</p>
+                    <h4 class="text-white font-bold mb-3">Backend & Deployment</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">FastAPI</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Flask</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">REST APIs</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Node.js</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">JSON Microservices</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">SQLite</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">MySQL</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">MongoDB</span>
+                    </div>
                 </div>
+
+                <!-- Web Development -->
                 <div class="bento-card p-6 rounded-3xl reveal" style="transition-delay: 400ms;">
                     <div class="text-neon-cyan mb-4">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.628.283a2 2 0 01-1.186.12l-2.733-.54a2 2 0 01-1.627-1.627l-.54-2.733a2 2 0 00-.12-1.186l-.283-.628a6 6 0 00-.517-3.86l-.477-2.387a2 2 0 00-.547-1.022L1.5 1.5"></path></svg>
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                     </div>
-                    <h4 class="text-white font-bold mb-2">Gen AI</h4>
-                    <p class="text-slate-500 text-xs leading-relaxed">Diffusion Models, U-Net, Diffusion Transformers (DiT), LDM</p>
+                    <h4 class="text-white font-bold mb-3">Frontend / Web</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">React</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Tailwind CSS</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">HTML5</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">CSS3</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">IoT Integration</span>
+                    </div>
                 </div>
+
+                <!-- Evaluation & Metrics -->
                 <div class="bento-card p-6 rounded-3xl reveal" style="transition-delay: 500ms;">
                     <div class="text-ai-indigo mb-4">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 7v10c0 2 1.5 3 3.5 3h9c2 0 3.5-1 3.5-3V7c0-2-1.5-3-3.5-3h-9C5.5 4 4 5 4 7z"></path></svg>
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                     </div>
-                    <h4 class="text-white font-bold mb-2">Deployment</h4>
-                    <p class="text-slate-500 text-xs leading-relaxed">FastAPI, Flask, REST APIs, JSON Microservices, Git</p>
+                    <h4 class="text-white font-bold mb-3">Model Evaluation</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Precision / Recall</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">F1-Score</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">FID</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Inception Score (IS)</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">CLIP Score</span>
+                    </div>
                 </div>
+
+                <!-- Dev Tools & Environments -->
                 <div class="bento-card p-6 rounded-3xl reveal" style="transition-delay: 600ms;">
                     <div class="text-neon-cyan mb-4">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                     </div>
-                    <h4 class="text-white font-bold mb-2">Evaluation</h4>
-                    <p class="text-slate-500 text-xs leading-relaxed">Precision, Recall, F1-Score, FID, Inception Score, CLIP</p>
+                    <h4 class="text-white font-bold mb-3">Tools & Environments</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Git & GitHub</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Jupyter Notebook</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">VS Code</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">PyCharm</span>
+                        <span class="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Google Colab</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -169,7 +260,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="mb-16 reveal">
                 <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Featured Projects</h2>
-                <p class="text-slate-500 uppercase tracking-widest text-xs">A showcase of production-ready AI systems and agentic architectures.</p>
+                <p class="text-slate-500 uppercase tracking-widest text-xs">A showcase of production-ready AI systems and applications.</p>
                 <div class="h-1 w-20 bg-neon-cyan mt-6"></div>
             </div>
 
@@ -234,7 +325,7 @@
                             <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">Node.js</span>
                             <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">PDF-Parse</span>
                         </div>
-                        <a href="https://github.com/anusha-sundaramurthi/ai-resume-tracker" target="_blank" class="w-full text-center py-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-xl text-xs font-bold text-white uppercase tracking-wider">View on GitHub</a>
+                        <a href="https://github.com/anusha-sundaramurthi/resumate" target="_blank" class="w-full text-center py-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-xl text-xs font-bold text-white uppercase tracking-wider">View on GitHub</a>
                     </div>
                 </div>
 
@@ -267,6 +358,22 @@
                             <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">FastAPI</span>
                         </div>
                         <a href="https://github.com/anusha-sundaramurthi/free-agentic-ide" target="_blank" class="w-full text-center py-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-xl text-xs font-bold text-white uppercase tracking-wider">View on GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Project: CGPA Calculator -->
+                <div class="bento-card accent-indigo p-8 rounded-3xl reveal" style="transition-delay: 100ms;">
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-2xl font-display font-bold text-white mb-4">CGPA Calculator</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                            Implemented an automated credit-weighted GPA calculation algorithm to compute cumulative performance. Features a responsive frontend with real-time analytics for students.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">JavaScript</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">HTML/CSS</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">Algorithms</span>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi/cgpa-calculator" target="_blank" class="w-full text-center py-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-xl text-xs font-bold text-white uppercase tracking-wider">View on GitHub</a>
                     </div>
                 </div>
             </div>
@@ -359,20 +466,20 @@
                 <h2 class="font-display text-3xl font-bold text-white mb-8">Certifications</h2>
                 <div class="grid grid-cols-1 gap-4">
                     <div class="flex items-center p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors">
-                        <div class="w-10 h-10 bg-ai-indigo rounded-lg flex-shrink-0 flex items-center justify-center mr-4 text-white">HF</div>
-                        <span class="text-sm font-medium">Fundamentals of Agents (Hugging Face)</span>
+                        <div class="w-10 h-10 bg-ai-indigo rounded-lg flex-shrink-0 flex items-center justify-center mr-4 text-white font-bold">HF</div>
+                        <span class="text-sm font-medium text-slate-300">Fundamentals of Agents (Hugging Face)</span>
                     </div>
                     <div class="flex items-center p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors">
-                        <div class="w-10 h-10 bg-neon-cyan rounded-lg flex-shrink-0 flex items-center justify-center mr-4 text-white">Z</div>
-                        <span class="text-sm font-medium">Zoho Young Creator Program</span>
+                        <div class="w-10 h-10 bg-neon-cyan rounded-lg flex-shrink-0 flex items-center justify-center mr-4 text-white font-bold">Z</div>
+                        <span class="text-sm font-medium text-slate-300">Zoho Young Creator Program</span>
                     </div>
                     <div class="flex items-center p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors">
-                        <div class="w-10 h-10 bg-ai-indigo rounded-lg flex-shrink-0 flex items-center justify-center mr-4 text-white">S</div>
-                        <span class="text-sm font-medium">Introduction to Psychology (SWAYAM)</span>
+                        <div class="w-10 h-10 bg-ai-indigo rounded-lg flex-shrink-0 flex items-center justify-center mr-4 text-white font-bold">S</div>
+                        <span class="text-sm font-medium text-slate-300">Introduction to Psychology (SWAYAM)</span>
                     </div>
                     <div class="flex items-center p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors">
-                        <div class="w-10 h-10 bg-neon-cyan rounded-lg flex-shrink-0 flex items-center justify-center mr-4 text-white">C</div>
-                        <span class="text-sm font-medium">Cloud Computing Fundamentals</span>
+                        <div class="w-10 h-10 bg-neon-cyan rounded-lg flex-shrink-0 flex items-center justify-center mr-4 text-white font-bold">C</div>
+                        <span class="text-sm font-medium text-slate-300">Cloud Computing Fundamentals</span>
                     </div>
                 </div>
             </div>
@@ -428,5 +535,4 @@
         });
     </script>
 </body>
-
 </html>
