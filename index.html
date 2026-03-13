@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anusha Sundaramurthi | AI & NLP Engineer</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        'ai-indigo': '#6366F1',
+                        'neon-cyan': '#22D3EE',
+                        'space-black': '#0A0A0B',
+                        'charcoal': '#161618',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .glass-nav { background: rgba(10, 10, 11, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .hero-gradient { background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15) 0%, rgba(10, 10, 11, 0) 70%); }
+        .bento-card { background: #161618; border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .bento-card:hover { border-color: rgba(99, 102, 241, 0.4); transform: translateY(-8px); box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7); }
+        .bento-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: transparent; transition: background 0.3s; }
+        .bento-card.accent-indigo:hover::before { background: #6366F1; }
+        .bento-card.accent-cyan:hover::before { background: #22D3EE; }
+        .skill-tag { background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.2); transition: all 0.3s; }
+        .skill-tag:hover { background: rgba(99, 102, 241, 0.3); border-color: #6366F1; }
+        .timeline-line { background: linear-gradient(to bottom, transparent, #6366F1, transparent); }
+    </style>
+</head>
+<body class="bg-space-black text-slate-200 font-sans selection:bg-ai-indigo selection:text-white transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 px-6 md:px-12 flex justify-between items-center">
+        <div class="font-display font-bold text-xl tracking-tighter text-white">ANUSHA<span class="text-ai-indigo">.</span></div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
+            <a href="#about" class="hover:text-ai-indigo transition-colors uppercase tracking-widest text-xs">About</a>
+            <a href="#experience" class="hover:text-ai-indigo transition-colors uppercase tracking-widest text-xs">Experience</a>
+            <a href="#projects" class="hover:text-ai-indigo transition-colors uppercase tracking-widest text-xs">Projects</a>
+            <a href="#contact" class="hover:text-ai-indigo transition-colors uppercase tracking-widest text-xs">Contact</a>
+        </div>
+        <div class="flex items-center space-x-4">
+            <a href="#contact" class="bg-ai-indigo hover:bg-indigo-500 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all">Hire Me</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 hero-gradient px-6 overflow-hidden">
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-ai-indigo/30 rounded-full blur-[120px] animate-pulse-slow"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-cyan/20 rounded-full blur-[120px] animate-pulse-slow"></div>
+        </div>
+        
+        <div class="relative z-10 text-center max-w-5xl">
+            <span class="block mb-4 text-ai-indigo font-display font-medium tracking-[0.3em] uppercase text-sm md:text-base reveal">AI & NLP Engineer</span>
+            <h1 class="font-display text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-white mb-8 reveal" style="transition-delay: 200ms;">
+                Anusha Sundaramurthi
+            </h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10 reveal" style="transition-delay: 400ms;">
+                Building efficient, real-time AI systems that transform complex data into actionable conversational intelligence.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 reveal" style="transition-delay: 600ms;">
+                <a href="#projects" class="w-full sm:w-auto px-8 py-4 bg-white text-black font-bold rounded-full hover:scale-105 transition-transform">Explore My Work</a>
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 border border-white/20 text-white font-bold rounded-full hover:bg-white/5 transition-all">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Skills (Bento Style) -->
+    <section id="about" class="py-32 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="mb-16 reveal">
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Core Competencies</h2>
+            <div class="h-1 w-20 bg-ai-indigo"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Large Card -->
+            <div class="md:col-span-2 bento-card p-8 rounded-3xl reveal" style="transition-delay: 100ms;">
+                <h3 class="text-xl font-display font-bold text-white mb-4">Engineering Philosophy</h3>
+                <p class="text-slate-400 leading-relaxed mb-6">
+                    I specialize in Natural Language Processing and Generative AI, focusing on production-ready systems using transformer architectures. My expertise lies in implementing end-to-end NLP pipelines and deploying high-performance inference APIs using FastAPI, consistently achieving 20% improvements in model precision through rigorous evaluation.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-tag px-4 py-2 rounded-full text-xs font-semibold text-white">LangChain</span>
+                    <span class="skill-tag px-4 py-2 rounded-full text-xs font-semibold text-white">LangGraph</span>
+                    <span class="skill-tag px-4 py-2 rounded-full text-xs font-semibold text-white">Transformers</span>
+                    <span class="skill-tag px-4 py-2 rounded-full text-xs font-semibold text-white">Latent Diffusion</span>
+                    <span class="skill-tag px-4 py-2 rounded-full text-xs font-semibold text-white">Semantic Search</span>
+                    <span class="skill-tag px-4 py-2 rounded-full text-xs font-semibold text-white">LLMs</span>
+                </div>
+            </div>
+
+            <!-- Small Card -->
+            <div class="bento-card p-8 rounded-3xl reveal" style="transition-delay: 200ms;">
+                <h3 class="text-xl font-display font-bold text-white mb-4">Programming</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center text-sm">
+                        <span>Python (Advanced)</span>
+                        <span class="text-ai-indigo">95%</span>
+                    </div>
+                    <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                        <div class="h-full bg-ai-indigo w-[95%]"></div>
+                    </div>
+                    <div class="flex justify-between items-center text-sm">
+                        <span>JavaScript</span>
+                        <span class="text-neon-cyan">80%</span>
+                    </div>
+                    <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                        <div class="h-full bg-neon-cyan w-[80%]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills List Grid -->
+            <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bento-card p-6 rounded-3xl reveal" style="transition-delay: 300ms;">
+                    <div class="text-ai-indigo mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">AI Frameworks</h4>
+                    <p class="text-slate-500 text-xs leading-relaxed">LangGraph, LangChain, PyTorch, Hugging Face, spaCy, Scikit-learn</p>
+                </div>
+                <div class="bento-card p-6 rounded-3xl reveal" style="transition-delay: 400ms;">
+                    <div class="text-neon-cyan mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.628.283a2 2 0 01-1.186.12l-2.733-.54a2 2 0 01-1.627-1.627l-.54-2.733a2 2 0 00-.12-1.186l-.283-.628a6 6 0 00-.517-3.86l-.477-2.387a2 2 0 00-.547-1.022L1.5 1.5"></path></svg>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">Gen AI</h4>
+                    <p class="text-slate-500 text-xs leading-relaxed">Diffusion Models, U-Net, Diffusion Transformers (DiT), LDM</p>
+                </div>
+                <div class="bento-card p-6 rounded-3xl reveal" style="transition-delay: 500ms;">
+                    <div class="text-ai-indigo mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 7v10c0 2 1.5 3 3.5 3h9c2 0 3.5-1 3.5-3V7c0-2-1.5-3-3.5-3h-9C5.5 4 4 5 4 7z"></path></svg>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">Deployment</h4>
+                    <p class="text-slate-500 text-xs leading-relaxed">FastAPI, Flask, REST APIs, JSON Microservices, Git</p>
+                </div>
+                <div class="bento-card p-6 rounded-3xl reveal" style="transition-delay: 600ms;">
+                    <div class="text-neon-cyan mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h4 class="text-white font-bold mb-2">Evaluation</h4>
+                    <p class="text-slate-500 text-xs leading-relaxed">Precision, Recall, F1-Score, FID, Inception Score, CLIP</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="projects" class="py-32 px-6 md:px-12 bg-charcoal/30">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16 reveal">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Featured Projects</h2>
+                <p class="text-slate-500 uppercase tracking-widest text-xs">A showcase of production-ready AI systems and agentic architectures.</p>
+                <div class="h-1 w-20 bg-neon-cyan mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project: RAG Chatbot -->
+                <div class="bento-card accent-indigo p-8 rounded-3xl reveal" style="transition-delay: 100ms;">
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-2xl font-display font-bold text-white mb-4">RAG Support Chatbot</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                            Designed and built an end-to-end e-commerce solution using LangChain and FAISS. Leveraged Gemma:3b to provide context-aware, grounded answers from PDF knowledge bases.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">LangChain</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">FAISS</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">Gemma</span>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi/rag-chatbot" target="_blank" class="w-full text-center py-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-xl text-xs font-bold text-white uppercase tracking-wider">View on GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Project: Multimodal Agent -->
+                <div class="bento-card accent-cyan p-8 rounded-3xl reveal" style="transition-delay: 200ms;">
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-2xl font-display font-bold text-white mb-4">Multimodal Agent</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                            Implemented a unified AI system for high-quality Text-to-Image and Text-to-Video generation using Latent Diffusion Models (LDM) and U-Net architectures.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">PyTorch</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">Diffusion</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">Transformers</span>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi/multimodal-agent" target="_blank" class="w-full text-center py-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-xl text-xs font-bold text-white uppercase tracking-wider">View on GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Project: Emotion Analyser -->
+                <div class="bento-card accent-indigo p-8 rounded-3xl reveal" style="transition-delay: 300ms;">
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-2xl font-display font-bold text-white mb-4">Emotion Analyser</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                            Developed a high-precision text classification tool for sentiment analysis. Integrated spaCy and BERT for deep intent recognition and emotion categorization.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">BERT</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">spaCy</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">NLP</span>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi/emotion-analyser" target="_blank" class="w-full text-center py-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-xl text-xs font-bold text-white uppercase tracking-wider">View on GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Project: ResuMate -->
+                <div class="bento-card accent-cyan p-8 rounded-3xl reveal" style="transition-delay: 100ms;">
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-2xl font-display font-bold text-white mb-4">ResuMate AI</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                            Building a resume optimization platform. Utilizes Claude API for intelligent ATS score calculation and personalized formatting recommendations for job seekers.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">Claude API</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">Node.js</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">PDF-Parse</span>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi/resumate" target="_blank" class="w-full text-center py-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-xl text-xs font-bold text-white uppercase tracking-wider">View on GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Project: Smart Irrigation -->
+                <div class="bento-card accent-indigo p-8 rounded-3xl reveal" style="transition-delay: 200ms;">
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-2xl font-display font-bold text-white mb-4">Smart Irrigation</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                            Developed an intelligent advisor system for agriculture. Combines soil moisture data with weather forecasting to optimize water consumption via predictive analytics.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">Python</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">IoT</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">Pandas</span>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi/smart-irrigation-advisor" target="_blank" class="w-full text-center py-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-xl text-xs font-bold text-white uppercase tracking-wider">View on GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Project: Free Agentic IDE -->
+                <div class="bento-card accent-cyan p-8 rounded-3xl reveal" style="transition-delay: 300ms;">
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-2xl font-display font-bold text-white mb-4">Agentic IDE</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                            An experimental integrated environment for building and deploying LangGraph agents. Focuses on visual graph management and real-time state monitoring.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">LangGraph</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">React</span>
+                            <span class="skill-tag px-3 py-1 rounded-full text-[10px] font-bold text-white">FastAPI</span>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi/free-agentic-ide" target="_blank" class="w-full text-center py-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-xl text-xs font-bold text-white uppercase tracking-wider">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section (Timeline) -->
+    <section id="experience" class="py-32 px-6 md:px-12 bg-white/[0.02]">
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-16 text-center reveal">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Professional Path</h2>
+                <p class="text-slate-500 uppercase tracking-widest text-xs">A journey through innovation and security</p>
+            </div>
+
+            <div class="relative pl-8 md:pl-0">
+                <!-- Center Line -->
+                <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px timeline-line"></div>
+
+                <!-- Job 1 -->
+                <div class="relative mb-20 reveal">
+                    <div class="md:flex md:justify-between items-center w-full mb-4">
+                        <div class="md:w-[45%] md:text-right pr-12 hidden md:block">
+                            <span class="text-ai-indigo font-bold">June 2025 — Present</span>
+                        </div>
+                        <div class="absolute left-[-8px] md:left-1/2 md:translate-x-[-50%] w-4 h-4 rounded-full bg-ai-indigo shadow-[0_0_15px_rgba(99,102,241,1)]"></div>
+                        <div class="md:w-[45%] md:pl-12">
+                            <span class="md:hidden text-ai-indigo font-bold text-sm block mb-1">June 2025 — Present</span>
+                            <h3 class="text-xl font-bold text-white">AI Intern</h3>
+                            <h4 class="text-neon-cyan font-medium">IG Enterprises</h4>
+                        </div>
+                    </div>
+                    <div class="md:flex md:justify-end">
+                        <div class="md:w-[45%] md:pl-12 bg-charcoal p-6 rounded-2xl border border-white/5">
+                            <ul class="text-sm text-slate-400 space-y-3">
+                                <li class="flex items-start"><span class="text-ai-indigo mr-2">•</span> Designed multilingual AI chatbots using FastAPI, spaCy NER, and BERT embeddings.</li>
+                                <li class="flex items-start"><span class="text-ai-indigo mr-2">•</span> Integrated Whisper speech-to-text for real-time voice conversational AI.</li>
+                                <li class="flex items-start"><span class="text-ai-indigo mr-2">•</span> Improved chatbot precision by 20% through extensive model benchmarking.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="relative mb-20 reveal" style="transition-delay: 200ms;">
+                    <div class="md:flex md:justify-between items-center w-full mb-4">
+                        <div class="md:w-[45%] md:pr-12">
+                            <span class="md:hidden text-neon-cyan font-bold text-sm block mb-1">May 2024</span>
+                            <h3 class="text-xl font-bold text-white">Student Intern</h3>
+                            <h4 class="text-neon-cyan font-medium">Cyber Crime Police Station</h4>
+                        </div>
+                        <div class="absolute left-[-8px] md:left-1/2 md:translate-x-[-50%] w-4 h-4 rounded-full bg-neon-cyan shadow-[0_0_15px_rgba(34,211,238,1)]"></div>
+                        <div class="md:w-[45%] md:text-left pl-12 hidden md:block">
+                            <span class="text-neon-cyan font-bold">May 2024</span>
+                        </div>
+                    </div>
+                    <div class="md:flex md:justify-start">
+                        <div class="md:w-[45%] md:pr-12 bg-charcoal p-6 rounded-2xl border border-white/5">
+                            <ul class="text-sm text-slate-400 space-y-3">
+                                <li class="flex items-start"><span class="text-neon-cyan mr-2">•</span> Gained hands-on experience in handling and analyzing cybercrime complaints.</li>
+                                <li class="flex items-start"><span class="text-neon-cyan mr-2">•</span> Observed digital evidence tracing and network-based forensic investigations.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certs -->
+    <section class="py-32 px-6 md:px-12 bg-white/[0.02]">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div class="reveal">
+                <h2 class="font-display text-3xl font-bold text-white mb-8">Academic Background</h2>
+                <div class="space-y-8">
+                    <div class="p-6 bg-charcoal rounded-3xl border border-white/5">
+                        <span class="text-xs font-bold text-ai-indigo uppercase tracking-widest">2022 — 2026</span>
+                        <h3 class="text-xl font-bold text-white mt-2">B.Tech in Computer Science</h3>
+                        <p class="text-slate-400 text-sm">Women's Engineering College, Puducherry</p>
+                        <p class="text-slate-500 text-sm mt-2">CGPA: 6.55 (In-progress)</p>
+                    </div>
+                    <div class="p-6 bg-charcoal rounded-3xl border border-white/5">
+                        <span class="text-xs font-bold text-neon-cyan uppercase tracking-widest">Graduated 2022</span>
+                        <h3 class="text-xl font-bold text-white mt-2">Higher Secondary</h3>
+                        <p class="text-slate-400 text-sm">Immaculate Heart School, Puducherry</p>
+                        <p class="text-slate-500 text-sm mt-2">Percentage: 77%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal" style="transition-delay: 200ms;">
+                <h2 class="font-display text-3xl font-bold text-white mb-8">Certifications</h2>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="flex items-center p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors">
+                        <div class="w-10 h-10 bg-ai-indigo rounded-lg flex-shrink-0 flex items-center justify-center mr-4 text-white">HF</div>
+                        <span class="text-sm font-medium">Fundamentals of Agents (Hugging Face)</span>
+                    </div>
+                    <div class="flex items-center p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors">
+                        <div class="w-10 h-10 bg-neon-cyan rounded-lg flex-shrink-0 flex items-center justify-center mr-4 text-white">Z</div>
+                        <span class="text-sm font-medium">Zoho Young Creator Program</span>
+                    </div>
+                    <div class="flex items-center p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors">
+                        <div class="w-10 h-10 bg-ai-indigo rounded-lg flex-shrink-0 flex items-center justify-center mr-4 text-white">S</div>
+                        <span class="text-sm font-medium">Introduction to Psychology (SWAYAM)</span>
+                    </div>
+                    <div class="flex items-center p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors">
+                        <div class="w-10 h-10 bg-neon-cyan rounded-lg flex-shrink-0 flex items-center justify-center mr-4 text-white">C</div>
+                        <span class="text-sm font-medium">Cloud Computing Fundamentals</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6 md:px-12 text-center max-w-4xl mx-auto">
+        <div class="reveal">
+            <span class="text-ai-indigo font-display font-medium tracking-widest uppercase text-sm mb-4 block">Get in touch</span>
+            <h2 class="font-display text-5xl md:text-7xl font-bold text-white mb-12 tracking-tighter">Ready to build the future of AI?</h2>
+            
+            <a href="mailto:anushasundaramurthi@gmail.com" class="text-2xl md:text-4xl font-display font-light text-slate-400 hover:text-white transition-colors border-b border-white/10 pb-2">
+                anushasundaramurthi<span class="text-ai-indigo">@</span>gmail.com
+            </a>
+
+            <div class="flex justify-center space-x-8 mt-16">
+                <a href="https://linkedin.com/in/anusha-sundaramurthi1728" target="_blank" class="text-slate-500 hover:text-ai-indigo transition-colors uppercase tracking-[0.2em] text-xs font-bold">LinkedIn</a>
+                <a href="https://github.com/anusha-sundaramurthi" target="_blank" class="text-slate-500 hover:text-neon-cyan transition-colors uppercase tracking-[0.2em] text-xs font-bold">GitHub</a>
+                <a href="tel:+918870482926" class="text-slate-500 hover:text-white transition-colors uppercase tracking-[0.2em] text-xs font-bold">+91 8870482926</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 text-center text-slate-600 text-[10px] uppercase tracking-widest">
+        &copy; 2026 Anusha Sundaramurthi. Handcrafted with AI & Precision.
+    </footer>
+
+    <script>
+        // Reveal Animations on Scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Navbar Scroll Effect
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('glass-nav');
+                nav.classList.replace('py-4', 'py-2');
+            } else {
+                nav.classList.remove('glass-nav');
+                nav.classList.replace('py-2', 'py-4');
+            }
+        });
+    </script>
+</body>
+</html>
