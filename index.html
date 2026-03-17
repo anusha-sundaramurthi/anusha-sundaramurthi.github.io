@@ -1,1196 +1,668 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anusha Sundaramurthi | AI & NLP Engineer Portfolio</title>
-    <meta name="description" content="Portfolio of Anusha Sundaramurthi, an AI & NLP Engineer specializing in Generative AI, RAG Pipelines, and scalable ML systems.">
+    <meta name="description" content="Portfolio of Anusha Sundaramurthi, an AI & NLP Engineer specializing in Generative AI, RAG pipelines, and scalable production-ready AI systems.">
+    <meta name="keywords" content="Anusha Sundaramurthi, AI Engineer, NLP, Generative AI, RAG, Python, FastAPI, Portfolio">
     
-    <!-- Google Fonts for premium typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS (Minimal framework approach for robust responsive design) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome for accessible icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Tailwind Configuration for EXACT requested colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgMain: '#1A2517',
+                        cardBg: '#243320',
+                        primary: '#ACC8A2',
+                        secondary: '#8aaf80',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
-        /* ==========================================
-           COLOR PALETTE & DESIGN TOKENS
-        ========================================== */
-        :root {
-            --bg-primary: #1A2517;
-            --bg-secondary: #243321;
-            --accent-primary: #ACC8A2;
-            --accent-hover: #B9D7AF;
-            --border-color: rgba(172, 200, 162, 0.2);
-            --text-heading: #EAF5E6;
-            --text-body: #C7D9C1;
-            --text-muted: #8FAF8A;
-            --glass-bg: rgba(172, 200, 162, 0.08);
-            --glass-shadow: 0 8px 32px rgba(172, 200, 162, 0.05);
-            --glow-shadow: 0 0 20px rgba(172, 200, 162, 0.15);
-            --transition: all 0.3s ease;
-        }
-
-        /* ==========================================
-           GLOBAL STYLES (Lightweight Reset)
-        ========================================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        /* Custom scrollbar and base styles for premium feel */
         body {
-            background-color: var(--bg-primary);
-            color: var(--text-body);
-            line-height: 1.6;
-            font-size: 16px;
-            overflow-x: hidden;
+            background-color: #1A2517;
+            color: #f3f4f6;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::selection {
+            background-color: #ACC8A2;
+            color: white;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1A2517;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #243320;
+            border-radius: 4px;
+            border: 1px solid #ACC8A2;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #ACC8A2, #8aaf80);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover-effect {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 102, 255, 0.2);
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-4px);
+            border-color: #8aaf80;
+            box-shadow: 0 10px 30px -10px rgba(0, 102, 255, 0.3);
         }
 
-        h1, h2, h3, h4 {
-            color: var(--text-heading);
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        a {
-            color: var(--accent-primary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--accent-hover);
-        }
-
-        section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* ==========================================
-           BUTTONS & BADGES
-        ========================================== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 1px solid transparent;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-primary);
-            color: var(--bg-primary);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent-hover);
-            box-shadow: var(--glow-shadow);
-            color: var(--bg-primary);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--accent-primary);
-            border-color: var(--border-color);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--glass-bg);
-            border-color: var(--accent-hover);
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 4px 12px;
-            background: var(--glass-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: var(--text-heading);
-            white-space: nowrap;
-        }
-
-        /* ==========================================
-           NAVIGATION
-        ========================================== */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(26, 37, 23, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-            padding: 15px 20px;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-heading);
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .nav-links a {
-            color: var(--text-body);
-            font-size: 0.95rem;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-primary);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-heading);
-            cursor: pointer;
-        }
-
-        /* ==========================================
-           HERO SECTION (7-Second Scan Focus)
-        ========================================== */
-        .hero {
-            padding-top: 150px;
-            padding-bottom: 80px;
-            min-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-
-        .hero h2 {
-            font-size: 1.5rem;
-            color: var(--accent-primary);
-            font-weight: 400;
-            margin-bottom: 20px;
-        }
-
-        .hero p.value-prop {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin-bottom: 30px;
-            color: var(--text-body);
-        }
-
-        .hero-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 40px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        /* ==========================================
-           ABOUT & IMPACT TABLE
-        ========================================== */
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .section-title::after {
-            content: '';
-            height: 1px;
-            flex: 1;
-            background: var(--border-color);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-        }
-
-        .impact-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-
-        .impact-table th, .impact-table td {
-            padding: 16px 20px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .impact-table th {
-            background: var(--glass-bg);
-            color: var(--text-heading);
-            font-weight: 600;
-            width: 30%;
-        }
-
-        .impact-table tr:last-child th,
-        .impact-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .impact-table td {
-            color: var(--text-body);
-        }
-
-        .highlight-metric {
-            color: var(--accent-primary);
-            font-weight: 600;
-        }
-
-        /* ==========================================
-           SKILLS SECTION
-        ========================================== */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-        }
-
+        /* Technical Arsenal — card hover */
         .skill-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
-            transition: var(--transition);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(172,200,162,0.07) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
         .skill-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--glow-shadow);
-            border-color: var(--accent-hover);
+            border-color: #ACC8A2 !important;
+            box-shadow: 0 12px 32px -8px rgba(172,200,162,0.25);
+        }
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+        .skill-card:hover .skill-icon {
+            transform: scale(1.15);
+            color: #ACC8A2 !important;
+        }
+        .skill-icon {
+            transition: transform 0.3s ease, color 0.3s ease;
+            display: inline-block;
         }
 
-        .skill-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            color: var(--accent-primary);
+        /* Individual skill tag hover */
+        .skill-tag {
+            transition: all 0.2s ease;
+            cursor: default;
         }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        /* ==========================================
-           PROJECTS SECTION
-        ========================================== */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            transition: var(--transition);
-        }
-
-        .project-card:hover {
-            border-color: var(--accent-hover);
-            box-shadow: var(--glow-shadow);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-
-        .project-title {
-            font-size: 1.25rem;
-            color: var(--text-heading);
-        }
-
-        .project-links a {
-            color: var(--text-muted);
-        }
-
-        .project-links a:hover {
-            color: var(--accent-primary);
-        }
-
-        .project-details {
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .project-details p {
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-        }
-
-        .project-details strong {
-            color: var(--text-heading);
-            font-weight: 500;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: auto;
-            padding-top: 15px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        /* ==========================================
-           GITHUB SECTION
-        ========================================== */
-        .github-section {
-            background: var(--glass-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 40px;
-            text-align: center;
-        }
-
-        .github-stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-
-        .stat-item h4 {
-            font-size: 2rem;
-            color: var(--accent-primary);
-        }
-
-        /* ==========================================
-           CERTIFICATIONS CAROUSEL (MANDATORY 2-ROW)
-        ========================================== */
-        .carousel-wrapper {
-            position: relative;
-            width: 100%;
-            padding: 0 40px; /* Space for buttons */
-        }
-
-        .carousel-container {
-            overflow: hidden;
-            border-radius: 12px;
-        }
-
-        .carousel-track {
-            display: grid;
-            /* Forces exactly two rows */
-            grid-template-rows: 1fr 1fr;
-            /* Auto flow creates columns to fill the rows */
-            grid-auto-flow: column;
-            gap: 20px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            scroll-snap-type: x mandatory;
-            padding-bottom: 10px;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .carousel-track::-webkit-scrollbar {
-            display: none;
-        }
-
-        .cert-card {
-            width: 340px; /* Fixed width to ensure horizontal scrolling */
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 20px;
-            scroll-snap-align: start;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .cert-header h3 {
-            font-size: 1.05rem;
-            margin-bottom: 5px;
-            line-height: 1.4;
-        }
-
-        .cert-issuer {
-            font-size: 0.85rem;
-            color: var(--accent-primary);
-            margin-bottom: 10px;
-        }
-
-        .cert-skills {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-
-        .cert-link {
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: auto;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            color: var(--accent-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: var(--transition);
-        }
-
-        .carousel-btn:hover {
-            background: var(--accent-primary);
-            color: var(--bg-primary);
-        }
-
-        .btn-prev { left: -10px; }
-        .btn-next { right: -10px; }
-
-        /* ==========================================
-           EDUCATION & CONTACT
-        ========================================== */
-        .edu-card {
-            background: var(--bg-secondary);
-            border-left: 4px solid var(--accent-primary);
-            padding: 24px;
-            border-radius: 0 12px 12px 0;
-            margin-bottom: 20px;
-        }
-
-        .edu-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .edu-meta {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-
-        .contact-wrapper {
-            text-align: center;
-            background: var(--bg-secondary);
-            padding: 60px 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
-
-        .contact-wrapper h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .contact-wrapper p {
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* ==========================================
-           RESPONSIVE DESIGN (Mobile First Adjustments)
-        ========================================== */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                background: var(--bg-primary);
-                padding: 20px;
-                border-bottom: 1px solid var(--border-color);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero h1 { font-size: 2.5rem; }
-            .hero h2 { font-size: 1.2rem; }
-            
-            .impact-table th, .impact-table td {
-                padding: 12px;
-                font-size: 0.9rem;
-            }
-            .impact-table th { width: 40%; }
-            
-            .carousel-wrapper { padding: 0 10px; }
-            .btn-prev { left: 0; }
-            .btn-next { right: 0; }
-            .cert-card { width: 280px; }
-        }
-
-        /* Inline SVGs for lightweight performance */
-        .icon {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
+        .skill-tag:hover {
+            background-color: rgba(172,200,162,0.12) !important;
+            border-color: #ACC8A2 !important;
+            color: #ACC8A2 !important;
+            transform: translateY(-2px);
         }
     </style>
 </head>
-<body>
+<body class="font-sans antialiased text-gray-200">
 
     <!-- NAVIGATION -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo"></div>
-            <div class="nav-links" id="navLinks">
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#certifications">Certifications</a>
-                <a href="#contact">Contact</a>
+    <nav class="fixed w-full z-50 bg-bgMain/90 backdrop-blur-md border-b border-primary/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <span class="text-xl font-bold tracking-tighter text-white"><span class="text-primary"></span></span>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="#skills" class="hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
+                        <a href="#projects" class="hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+                        <a href="#certifications" class="hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors">Certifications</a>
+                        <a href="#contact" class="hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
             </div>
-            <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle Menu">
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            </button>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="home">
-        <h1>Anusha Sundaramurthi</h1>
-        <h2>AI & NLP Engineer | Generative AI & RAG Specialist</h2>
-        <p class="value-prop">Building scalable, production-ready machine learning architectures, real-time AI inference APIs, and low-latency NLP pipelines to solve complex business problems.</p>
+    <!-- HERO SECTION (Target: 5-7 second readability) -->
+    <header id="about" class="pt-32 pb-20 md:pt-48 md:pb-32 px-4 max-w-7xl mx-auto flex flex-col justify-center min-h-[90vh]">
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-4">
+            Anusha Sundaramurthi
+        </h1>
+        <h2 class="text-3xl md:text-5xl font-bold mb-6 gradient-text">
+            AI & NLP Engineer
+        </h2>
+        <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mb-8 leading-relaxed">
+            I build scalable, production-ready AI systems, fully local RAG pipelines, and conversational agents. Focused on optimizing inference, reducing latency, and delivering real-world value.
+        </p>
         
-        <div class="hero-tech">
-            <span class="badge">Python</span>
-            <span class="badge">FastAPI</span>
-            <span class="badge">LangChain</span>
-            <span class="badge">Transformer Models</span>
-            <span class="badge">AWS</span>
-            <span class="badge">Docker</span>
+        <div class="flex flex-wrap items-center gap-3 mb-10">
+            <span class="px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-sm font-semibold text-secondary">Python</span>
+            <span class="px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-sm font-semibold text-secondary">FastAPI</span>
+            <span class="px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-sm font-semibold text-secondary">Hugging Face</span>
+            <span class="px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-sm font-semibold text-secondary">LangChain</span>
+            <span class="px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-sm font-semibold text-secondary">AWS</span>
+            <span class="px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-sm font-semibold text-secondary">RAG</span>
         </div>
 
-        <div class="hero-actions">
-            <a href="#projects" class="btn btn-primary">
-                View Projects
-                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#projects" aria-label="View Projects" class="flex items-center justify-center px-8 py-4 text-base font-bold rounded-lg text-[#1A2517] bg-primary hover:bg-[#8aaf80] transition-colors shadow-lg shadow-[#ACC8A2]/30">
+                View My Work
             </a>
-            <a href="https://github.com/anusha-sundaramurthi" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                GitHub Profile
+            <a href="https://github.com/anusha-sundaramurthi" target="_blank" aria-label="Visit GitHub Profile" class="flex items-center justify-center px-8 py-4 text-base font-bold rounded-lg text-white bg-cardBg border border-primary/50 hover:border-secondary hover:text-secondary transition-colors">
+                <i class="fab fa-github mr-2 text-xl"></i> GitHub 
             </a>
-            <a href="https://docs.google.com/document/d/1aARHbDUXjzAyf2OZCoFZV6OZ0CXg_AI9/edit?usp=sharing&ouid=102593113041190262221&rtpof=true&sd=true" class="btn btn-outline" download>
-                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                Download Resume
+            <a href="https://docs.google.com/document/d/1aARHbDUXjzAyf2OZCoFZV6OZ0CXg_AI9/edit?usp=drive_link&ouid=102593113041190262221&rtpof=true&sd=true" download target="_blank" aria-label="Download Resume" class="flex items-center justify-center px-8 py-4 text-base font-bold rounded-lg text-[#1A2517] bg-primary hover:bg-[#8aaf80] transition-colors shadow-lg shadow-[#ACC8A2]/30">
+                 Download Resume
             </a>
         </div>
-    </section>
-            
+    </header>
 
     <!-- SKILLS SECTION -->
-    <section id="skills">
-        <h2 class="section-title">Technical Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3>Programming Languages</h3>
-                <div class="skill-list">
-                    <span class="badge">Python (Advanced)</span>
-                    <span class="badge">C / C++</span>
-                    <span class="badge">JavaScript</span>
-                    <span class="badge">TypeScript</span>
-                    <span class="badge">HTML / CSS</span>
-                </div>
-            </div>
+    <section id="skills" class="py-20 bg-cardBg/30 border-y border-primary/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-12 text-white"><span class="text-primary"></span> Technical Arsenal</h2>
             
-            <div class="skill-card">
-                <h3>AI / ML Tools & Models</h3>
-                <div class="skill-list">
-                    <span class="badge">PyTorch & TensorFlow</span>
-                    <span class="badge">Hugging Face</span>
-                    <span class="badge">LangChain & LlamaIndex</span>
-                    <span class="badge">Ollama</span>
-                    <span class="badge">spaCy & Scikit-learn</span>
-                    <span class="badge">FAISS & ChromaDB</span>
-                    <span class="badge">Diffusion Models (LDM, DiT)</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Programming Languages -->
+                <div class="skill-card bg-cardBg p-6 rounded-xl border border-primary/20">
+                    <h3 class="text-xl font-semibold mb-4 text-secondary"><i class="fas fa-code mr-2 skill-icon"></i>Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Python (Advanced)</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">C/C++</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">JavaScript</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">TypeScript</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">HTML/CSS</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="skill-card">
-                <h3>IoT / Hardware Technologies</h3>
-                <div class="skill-list">
-                    <span class="badge">Raspberry Pi</span>
-                    <span class="badge">IoT Sensors</span>
-                    <span class="badge">Firebase Integration</span>
+                <!-- AI / ML Tools -->
+                <div class="skill-card bg-cardBg p-6 rounded-xl border border-primary/20">
+                    <h3 class="text-xl font-semibold mb-4 text-secondary"><i class="fas fa-brain mr-2 skill-icon"></i>AI & ML</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">PyTorch</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">TensorFlow</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Hugging Face</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">LangChain</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">LlamaIndex</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Ollama</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">spaCy</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Scikit-learn</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="skill-card">
-                <h3>Tools & Platforms</h3>
-                <div class="skill-list">
-                    <span class="badge">FastAPI & Flask</span>
-                    <span class="badge">Docker & MLOps</span>
-                    <span class="badge">AWS Cloud</span>
-                    <span class="badge">Git & GitHub</span>
-                    <span class="badge">MongoDB & MySQL</span>
-                    <span class="badge">Jupyter & Colab</span>
+                <!-- Tools & Platforms -->
+                <div class="skill-card bg-cardBg p-6 rounded-xl border border-primary/20">
+                    <h3 class="text-xl font-semibold mb-4 text-secondary"><i class="fas fa-server mr-2 skill-icon"></i>Tools & Deployment</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">FastAPI</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Flask</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Docker</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">AWS</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Git/GitHub</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">FAISS</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">MongoDB</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">MySQL</span>
+                    </div>
+                </div>
+
+                <!-- IoT / Hardware -->
+                <div class="skill-card bg-cardBg p-6 rounded-xl border border-primary/20">
+                    <h3 class="text-xl font-semibold mb-4 text-secondary"><i class="fas fa-microchip mr-2 skill-icon"></i>IoT & Hardware</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Raspberry Pi</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">IoT Sensors</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Firebase (IoT Data)</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FEATURED PROJECTS SECTION (MANDATORY: ALL 8 PROJECTS) -->
-    <section id="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
+    <!-- PROJECTS SECTION (MANDATORY: ALL 8 PROJECTS) -->
+    <section id="projects" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-4 text-white"><span class="text-primary"></span> Featured Engineering Projects</h2>
+            <p class="text-gray-400 mb-12 max-w-2xl">A comprehensive showcase of end-to-end applications built, ranging from local RAG models to full-stack multi-modal AI agents.</p>
 
-            <!-- Project 1 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">ai-resume-tracker (ResuMate)</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/anusha-sundaramurthi/ai-resume-tracker" target="_blank" aria-label="GitHub Repo">
-                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-8">
+                
+                <!-- Project 1: ResuMate -->
+                <article class="bg-cardBg rounded-2xl p-8 card-hover-effect flex flex-col h-full relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i class="fas fa-file-pdf text-6xl text-primary"></i>
+                    </div>
+                    <div class="flex-grow z-10">
+                        <h3 class="text-2xl font-bold text-white mb-4">ResuMate — AI Resume Analyzer</h3>
+                        <div class="space-y-3 text-sm text-gray-300 mb-6">
+                            <p><strong class="text-secondary">Problem:</strong> Job seekers struggle to bypass ATS filters and tailor resumes efficiently.</p>
+                            <p><strong class="text-secondary">Solution:</strong> Built an AI-powered resume management and job tracking system using semantic similarity and the Claude API.</p>
+                            <p><strong class="text-secondary">Key Features:</strong> Centralized PDF storage, real-time application tracking, AI-driven actionable suggestions, and ATS scoring.</p>
+                            <p><strong class="text-secondary">Outcome:</strong> Delivered 95%+ multi-format extraction accuracy, providing real-time feedback for over 1,000 resumes.</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto z-10 border-t border-gray-800 pt-4">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">JavaScript</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">Claude API</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">Puter.js</span>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi/ai-resume-tracker" target="_blank" class="inline-flex items-center text-primary hover:text-secondary font-semibold transition-colors">
+                            <i class="fab fa-github mr-2"></i> View Source Code
                         </a>
                     </div>
-                </div>
-                <div class="project-details">
-                    <p><strong>Problem:</strong> Job seekers face unpredictability passing ATS filters and tailoring resumes.</p>
-                    <p><strong>Solution:</strong> An AI-powered resume management and job application tracking system.</p>
-                    <p><strong>Key Features:</strong> Centralized PDF resume storage, application tracking, and AI-driven content suggestions.</p>
-                    <p><strong>Outcome/Value:</strong> Analyzed 1,000+ resumes with 95%+ multi-format extraction accuracy, improving ATS pass rates.</p>
-                </div>
-                <div class="project-tech">
-                    <span class="badge">JavaScript</span>
-                    <span class="badge">Claude API</span>
-                    <span class="badge">Puter.js</span>
-                    <span class="badge">TypeScript</span>
-                </div>
-            </div>
+                </article>
 
-            <!-- Project 2 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">RAG Customer Support Chatbot</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/anusha-sundaramurthi/rag-chatbot" target="_blank" aria-label="GitHub Repo">
-                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <!-- Project 2: RAG Customer Support -->
+                <article class="bg-cardBg rounded-2xl p-8 card-hover-effect flex flex-col h-full relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i class="fas fa-robot text-6xl text-primary"></i>
+                    </div>
+                    <div class="flex-grow z-10">
+                        <h3 class="text-2xl font-bold text-white mb-4">TempestTrail RAG Chatbot</h3>
+                        <div class="space-y-3 text-sm text-gray-300 mb-6">
+                            <p><strong class="text-secondary">Problem:</strong> High operational costs and hallucination risks associated with cloud-based LLM APIs for support.</p>
+                            <p><strong class="text-secondary">Solution:</strong> Architected a fully local, offline Retrieval-Augmented Generation (RAG) pipeline to query e-commerce PDF docs safely.</p>
+                            <p><strong class="text-secondary">Key Features:</strong> PDF document QA, semantic search using Sentence Transformers, Top-K retrieval (FAISS), and Streamlit Chat UI.</p>
+                            <p><strong class="text-secondary">Outcome:</strong> Reduced cloud API costs by 100% and drastically minimized hallucinations across 500+ query benchmarks.</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto z-10 border-t border-gray-800 pt-4">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">Python</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">LangChain</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">FAISS</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">Ollama (Gemma3)</span>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi/rag-chatbot" target="_blank" class="inline-flex items-center text-primary hover:text-secondary font-semibold transition-colors">
+                            <i class="fab fa-github mr-2"></i> View Source Code
                         </a>
                     </div>
-                </div>
-                <div class="project-details">
-                    <p><strong>Problem:</strong> High operational costs and hallucination risks associated with cloud-based LLMs.</p>
-                    <p><strong>Solution:</strong> Architected a fully local Retrieval-Augmented Generation (RAG) pipeline to answer queries from PDFs.</p>
-                    <p><strong>Key Features:</strong> Local Gemma3:1b model, Document retrieval, Streamlit Chat UI, Zero API keys required.</p>
-                    <p><strong>Outcome/Value:</strong> Reduced cloud API costs by 100% and cut hallucinations across 500+ queries via grounded retrieval.</p>
-                </div>
-                <div class="project-tech">
-                    <span class="badge">Python</span>
-                    <span class="badge">LangChain</span>
-                    <span class="badge">FAISS</span>
-                    <span class="badge">Ollama</span>
-                </div>
-            </div>
+                </article>
 
-            <!-- Project 3 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">Multi-Modal AI Agent</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/anusha-sundaramurthi/multimodal-agent" target="_blank" aria-label="GitHub Repo">
-                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <!-- Project 3: Multi-Modal AI Agent -->
+                <article class="bg-cardBg rounded-2xl p-8 card-hover-effect flex flex-col h-full relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i class="fas fa-photo-video text-6xl text-primary"></i>
+                    </div>
+                    <div class="flex-grow z-10">
+                        <h3 class="text-2xl font-bold text-white mb-4">Multi-Modal AI Agent</h3>
+                        <div class="space-y-3 text-sm text-gray-300 mb-6">
+                            <p><strong class="text-secondary">Problem:</strong> Complex user queries often require routing to specialized generation models (text, images, or video).</p>
+                            <p><strong class="text-secondary">Solution:</strong> Designed an agent capable of dynamic intent classification to route prompts across three distinct AI modalities seamlessly.</p>
+                            <p><strong class="text-secondary">Key Features:</strong> Intent routing mechanism, GPU-accelerated backend via Google Colab, and a local FastAPI proxy layer.</p>
+                            <p><strong class="text-secondary">Outcome:</strong> Centralized interface handling text, image, and video generation endpoints automatically based on natural language.</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto z-10 border-t border-gray-800 pt-4">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">Python</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">FastAPI</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">Hugging Face</span>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi/multimodal-agent" target="_blank" class="inline-flex items-center text-primary hover:text-secondary font-semibold transition-colors">
+                            <i class="fab fa-github mr-2"></i> View Source Code
                         </a>
                     </div>
-                </div>
-                <div class="project-details">
-                    <p><strong>Problem:</strong> Lack of seamless interaction across varying generative modalities.</p>
-                    <p><strong>Solution:</strong> A multi-modal agent routing prompts to text, image, and video generators.</p>
-                    <p><strong>Key Features:</strong> Intent classification, local FastAPI proxy connecting to GPU-accelerated Google Colab backend.</p>
-                    <p><strong>Outcome/Value:</strong> Achieved unified multi-modal generation through intelligent prompt routing.</p>
-                </div>
-                <div class="project-tech">
-                    <span class="badge">FastAPI</span>
-                    <span class="badge">Jupyter</span>
-                    <span class="badge">Python</span>
-                    <span class="badge">HTML</span>
-                </div>
-            </div>
+                </article>
 
-            <!-- Project 4 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">LLM Chat Studio</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/anusha-sundaramurthi/llm-chat-studio" target="_blank" aria-label="GitHub Repo">
-                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <!-- Project 4: Emotion Analyser -->
+                <article class="bg-cardBg rounded-2xl p-8 card-hover-effect flex flex-col h-full relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i class="fas fa-smile-beam text-6xl text-primary"></i>
+                    </div>
+                    <div class="flex-grow z-10">
+                        <h3 class="text-2xl font-bold text-white mb-4">Emotion Analyser Web App</h3>
+                        <div class="space-y-3 text-sm text-gray-300 mb-6">
+                            <p><strong class="text-secondary">Problem:</strong> Need for high-speed, lightweight text sentiment analysis without relying on heavy external LLM calls.</p>
+                            <p><strong class="text-secondary">Solution:</strong> Built an NLP classifier using semantic similarity with transformer embeddings to detect 7 distinct emotional states.</p>
+                            <p><strong class="text-secondary">Key Features:</strong> Uses <code>all-MiniLM-L6-v2</code> embeddings, modern HTML/JS frontend with smooth animations, lightweight REST architecture.</p>
+                            <p><strong class="text-secondary">Outcome:</strong> Deployed a highly responsive API achieving sub-100ms real-time inference latency via FastAPI.</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto z-10 border-t border-gray-800 pt-4">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">FastAPI</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">Sentence Transformers</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">JS/CSS</span>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi/Emotion_Analyser" target="_blank" class="inline-flex items-center text-primary hover:text-secondary font-semibold transition-colors">
+                            <i class="fab fa-github mr-2"></i> View Source Code
                         </a>
                     </div>
-                </div>
-                <div class="project-details">
-                    <p><strong>Problem:</strong> Fragmented access to different LLM providers hindering developer workflows.</p>
-                    <p><strong>Solution:</strong> A Multi-Provider AI Chat Interface combining multiple models into one application.</p>
-                    <p><strong>Key Features:</strong> Containerized deployment (Docker), Streamlit UI, FastAPI backend.</p>
-                    <p><strong>Outcome/Value:</strong> Provides a production-ready foundation for extending into advanced AI workflows and RAG systems.</p>
-                </div>
-                <div class="project-tech">
-                    <span class="badge">Python</span>
-                    <span class="badge">Docker</span>
-                    <span class="badge">FastAPI</span>
-                    <span class="badge">Streamlit</span>
-                </div>
-            </div>
+                </article>
 
-            <!-- Project 5 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">Emotion Analyser</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/anusha-sundaramurthi/Emotion_Analyser" target="_blank" aria-label="GitHub Repo">
-                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <!-- Project 5: LLM Chat Studio -->
+                <article class="bg-cardBg rounded-2xl p-8 card-hover-effect flex flex-col h-full relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i class="fas fa-comments text-6xl text-primary"></i>
+                    </div>
+                    <div class="flex-grow z-10">
+                        <h3 class="text-2xl font-bold text-white mb-4">LLM Chat Studio</h3>
+                        <div class="space-y-3 text-sm text-gray-300 mb-6">
+                            <p><strong class="text-secondary">Problem:</strong> Fragmented developer experience when testing and comparing outputs across multiple AI providers.</p>
+                            <p><strong class="text-secondary">Solution:</strong> Engineered a unified, multi-provider AI chat interface powered by FastAPI and Streamlit.</p>
+                            <p><strong class="text-secondary">Key Features:</strong> Docker containerization for instant setup, secure API key environment management, and active session handling.</p>
+                            <p><strong class="text-secondary">Outcome:</strong> Created a highly extensible, production-ready foundation suitable for integration into complex Agentic or RAG workflows.</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto z-10 border-t border-gray-800 pt-4">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">Docker</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">FastAPI</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">Streamlit</span>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi/llm-chat-studio" target="_blank" class="inline-flex items-center text-primary hover:text-secondary font-semibold transition-colors">
+                            <i class="fab fa-github mr-2"></i> View Source Code
                         </a>
                     </div>
-                </div>
-                <div class="project-details">
-                    <p><strong>Problem:</strong> Traditional keyword-based emotion detection lacks contextual understanding.</p>
-                    <p><strong>Solution:</strong> AI-powered web app detecting emotions using semantic similarity and transformer embeddings.</p>
-                    <p><strong>Key Features:</strong> 7-class emotion classification, modern UI, all-MiniLM-L6-v2 embedding model.</p>
-                    <p><strong>Outcome/Value:</strong> Deployed a sub-100ms real-time REST API via FastAPI, proving highly efficient.</p>
-                </div>
-                <div class="project-tech">
-                    <span class="badge">FastAPI</span>
-                    <span class="badge">Sentence Transformers</span>
-                    <span class="badge">HTML/JS</span>
-                </div>
-            </div>
+                </article>
 
-            <!-- Project 6 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">Free Agentic IDE</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/anusha-sundaramurthi/free-agentic-ide" target="_blank" aria-label="GitHub Repo">
-                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <!-- Project 6: Free Agentic IDE -->
+                <article class="bg-cardBg rounded-2xl p-8 card-hover-effect flex flex-col h-full relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i class="fas fa-laptop-code text-6xl text-primary"></i>
+                    </div>
+                    <div class="flex-grow z-10">
+                        <h3 class="text-2xl font-bold text-white mb-4">Free Agentic IDE</h3>
+                        <div class="space-y-3 text-sm text-gray-300 mb-6">
+                            <p><strong class="text-secondary">Problem:</strong> Missing context-aware, integrated AI refactoring capabilities natively within standard lightweight code editors.</p>
+                            <p><strong class="text-secondary">Solution:</strong> Developed a context-aware coding environment with semantic indexing, direct chat, and MCP Server integrations.</p>
+                            <p><strong class="text-secondary">Key Features:</strong> "Add to Chat" / "Add to Edit" snippet actions, directory-wide code embedding for search, Model Context Protocol integration.</p>
+                            <p><strong class="text-secondary">Outcome:</strong> Boosts coding productivity by enabling semantic repository questioning and automated in-editor refactoring.</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto z-10 border-t border-gray-800 pt-4">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">Python</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">MCP (Anthropic)</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">LLM Integrations</span>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi/free-agentic-ide" target="_blank" class="inline-flex items-center text-primary hover:text-secondary font-semibold transition-colors">
+                            <i class="fab fa-github mr-2"></i> View Source Code
                         </a>
                     </div>
-                </div>
-                <div class="project-details">
-                    <p><strong>Problem:</strong> Standard IDEs lack deep, context-aware AI integration over large codebases.</p>
-                    <p><strong>Solution:</strong> Developed a context-aware Agentic IDE using embedding models.</p>
-                    <p><strong>Key Features:</strong> Codebase indexing, session management, and Model Context Protocol (MCP) server support.</p>
-                    <p><strong>Outcome/Value:</strong> Enables complex cross-project architectural querying and automated refactoring suggestions.</p>
-                </div>
-                <div class="project-tech">
-                    <span class="badge">Python</span>
-                    <span class="badge">MCP</span>
-                    <span class="badge">LLM</span>
-                    <span class="badge">Embeddings</span>
-                </div>
-            </div>
+                </article>
 
-            <!-- Project 7 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">Smart Irrigation Advisor</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/anusha-sundaramurthi/smart-irrigation-advisor" target="_blank" aria-label="GitHub Repo">
-                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <!-- Project 7: Smart Irrigation Advisor -->
+                <article class="bg-cardBg rounded-2xl p-8 card-hover-effect flex flex-col h-full relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i class="fas fa-leaf text-6xl text-primary"></i>
+                    </div>
+                    <div class="flex-grow z-10">
+                        <h3 class="text-2xl font-bold text-white mb-4">Smart Irrigation Advisor</h3>
+                        <div class="space-y-3 text-sm text-gray-300 mb-6">
+                            <p><strong class="text-secondary">Problem:</strong> Inefficient agricultural water management leading to both crop stress and systemic resource waste.</p>
+                            <p><strong class="text-secondary">Solution:</strong> Created an IoT-based system that dynamically tracks real-time soil moisture and local weather to recommend watering schedules.</p>
+                            <p><strong class="text-secondary">Key Features:</strong> Firebase realtime database integration, OpenWeather API pulls, live dashboard, crop-specific logic, MIT App Inventor UI.</p>
+                            <p><strong class="text-secondary">Outcome:</strong> Delivered a fully tested cloud and software layer, primed for direct Raspberry Pi hardware sensor deployment.</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto z-10 border-t border-gray-800 pt-4">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">Python</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">Firebase</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">IoT / Raspberry Pi</span>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi/smart-irrigation-advisor" target="_blank" class="inline-flex items-center text-primary hover:text-secondary font-semibold transition-colors">
+                            <i class="fab fa-github mr-2"></i> View Source Code
                         </a>
                     </div>
-                </div>
-                <div class="project-details">
-                    <p><strong>Problem:</strong> Inefficient water usage in farming due to lack of real-time environmental data.</p>
-                    <p><strong>Solution:</strong> An IoT-based application providing live agricultural insights.</p>
-                    <p><strong>Key Features:</strong> Live soil moisture monitoring, OpenWeather API integration, MIT App Inventor mobile dashboard.</p>
-                    <p><strong>Outcome/Value:</strong> Software and cloud layers fully completed and tested, offering data-driven irrigation decisions.</p>
-                </div>
-                <div class="project-tech">
-                    <span class="badge">Python</span>
-                    <span class="badge">Firebase</span>
-                    <span class="badge">Raspberry Pi</span>
-                    <span class="badge">APIs</span>
-                </div>
-            </div>
+                </article>
 
-            <!-- Project 8 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">CGPA Calculator</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/anusha-sundaramurthi/cgpa-calculator" target="_blank" aria-label="GitHub Repo">
-                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <!-- Project 8: CGPA Calculator -->
+                <article class="bg-cardBg rounded-2xl p-8 card-hover-effect flex flex-col h-full relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i class="fas fa-calculator text-6xl text-primary"></i>
+                    </div>
+                    <div class="flex-grow z-10">
+                        <h3 class="text-2xl font-bold text-white mb-4">WEC CGPA Calculator</h3>
+                        <div class="space-y-3 text-sm text-gray-300 mb-6">
+                            <p><strong class="text-secondary">Problem:</strong> Students lacked a dedicated, university-specific tool to accurately model and project their 8-semester grading trajectory.</p>
+                            <p><strong class="text-secondary">Solution:</strong> Designed a modern, highly responsive frontend utility engineered specifically for the CSE curriculum.</p>
+                            <p><strong class="text-secondary">Key Features:</strong> Precise credit weighting logic mapped to all 8 semesters, instant aggregate tracking, and mobile-first UX layout.</p>
+                            <p><strong class="text-secondary">Outcome:</strong> Streamlined complex academic tracking and grade classification into an intuitive, zero-latency static application.</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto z-10 border-t border-gray-800 pt-4">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">HTML5</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">CSS3</span>
+                            <span class="text-xs font-mono bg-bgMain px-2 py-1 rounded text-gray-400">JavaScript</span>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi/cgpa-calculator" target="_blank" class="inline-flex items-center text-primary hover:text-secondary font-semibold transition-colors">
+                            <i class="fab fa-github mr-2"></i> View Source Code
                         </a>
                     </div>
-                </div>
-                <div class="project-details">
-                    <p><strong>Problem:</strong> Students lacked a dedicated tool to track complex academic performance metrics.</p>
-                    <p><strong>Solution:</strong> A modern, customized 8-semester calculator specifically for CSE students.</p>
-                    <p><strong>Key Features:</strong> Complete 8-semester curriculum support, precise credit structure logic, mobile responsive design.</p>
-                    <p><strong>Outcome/Value:</strong> Simplifies grade tracking, deployed live for student usage via GitHub Pages.</p>
-                </div>
-                <div class="project-tech">
-                    <span class="badge">HTML</span>
-                    <span class="badge">CSS</span>
-                    <span class="badge">JavaScript</span>
-                </div>
-            </div>
+                </article>
 
+            </div>
         </div>
     </section>
 
-    <!-- GITHUB & CODE CREDIBILITY -->
-    <section id="github">
-        <div class="github-section">
-            <h2 class="section-title" style="justify-content: center;">Open Source Contribution & Code Quality</h2>
-            <p>I actively maintain a clean, well-documented GitHub repository showcasing production-level code, detailed READMEs, and scalable architecture implementations.</p>
-            
-            <div class="github-stats">
-                <div class="stat-item">
-                    <h4>8+</h4>
-                    <p>Public Repositories</p>
-                </div>
-                <div class="stat-item">
-                    <h4>Python & TS</h4>
-                    <p>Primary Stack</p>
-                </div>
-                <div class="stat-item">
-                    <h4>MLOps</h4>
-                    <p>Focus Area</p>
-                </div>
-            </div>
-            
-            <a href="https://github.com/anusha-sundaramurthi" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                Explore My GitHub Repositories
+    <!-- GITHUB HIGHLIGHT SECTION -->
+    <section class="py-16 bg-cardBg/50 border-y border-primary/20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Built for Production & Open Source</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-8">
+                Every repository is structured for immediate deployment. You'll find clear architecture diagrams, requirement files, Docker configurations, and fully documented setup instructions to ensure reproducibility.
+            </p>
+            <a href="https://github.com/anusha-sundaramurthi" target="_blank" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-lg text-bgMain bg-white hover:bg-gray-200 transition-colors">
+                <i class="fab fa-github mr-2"></i> Audit My Code on GitHub
             </a>
         </div>
     </section>
 
-    <!-- CERTIFICATIONS CAROUSEL (MANDATORY COMPLETE LIST - 23 ITEMS IN 2 ROWS) -->
-    <section id="certifications">
-        <h2 class="section-title">Certifications & Continuous Learning</h2>
-        
-        <div class="carousel-wrapper">
-            <button class="carousel-btn btn-prev" aria-label="Previous Certifications">
-                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            </button>
-            
-            <div class="carousel-container">
-                <div class="carousel-track" id="certTrack">
-                    
-                    <!-- Script dynamically generates 23 items below (hardcoded for ATS readability) -->
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>GenAI Powered Data Analytics</h3>
-                            <p class="cert-issuer">Forage | Sep 2025</p>
-                        </div>
-                        <p class="cert-skills">Data Analytics, Risk Profiling, AI Delinquency Prediction</p>
-                        <a href="https://drive.google.com/file/d/1cozguVbOLPwmfr9eEw6HKRrgCnCr-Y1U/view?usp=drive_link" class="cert-link">View Certificate</a>
-                    </div>
+    <!-- CERTIFICATIONS SECTION (MANDATORY: ALL 25 LISTED) -->
+    <section id="certifications" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-4 text-white"><span class="text-primary"></span> Credentials & Certifications</h2>
+            <p class="text-gray-400 mb-12">Continuous learning validated through 25 industry credentials across AI, Cloud, and Engineering.</p>
 
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Introduction to Model Context Protocol</h3>
-                            <p class="cert-issuer">Anthropic | Oct 2025</p>
-                        </div>
-                        <p class="cert-skills">MCP Framework, Tool Integration</p>
-                        <a href="https://drive.google.com/file/d/1hSyTIRSAW49wGGuaSwfYlhkNoS-njWDg/view?usp=drive_link" class="cert-link">View Certificate</a>
-                    </div>
+            <!-- 2-Row Infinite Auto-Running Carousel -->
+            <style>
+                .cert-carousel-wrapper {
+                    overflow: hidden;
+                    position: relative;
+                    width: 100%;
+                }
+                .cert-carousel-wrapper::before,
+                .cert-carousel-wrapper::after {
+                    content: '';
+                    position: absolute;
+                    top: 0; bottom: 0;
+                    width: 80px;
+                    z-index: 2;
+                    pointer-events: none;
+                }
+                .cert-carousel-wrapper::before {
+                    left: 0;
+                    background: linear-gradient(to right, #1A2517, transparent);
+                }
+                .cert-carousel-wrapper::after {
+                    right: 0;
+                    background: linear-gradient(to left, #1A2517, transparent);
+                }
+                .cert-track {
+                    display: flex;
+                    gap: 16px;
+                    width: max-content;
+                    animation: cert-scroll-ltr 50s linear infinite;
+                }
+                .cert-track-rtl {
+                    animation: cert-scroll-rtl 55s linear infinite;
+                }
+                .cert-carousel-wrapper:hover .cert-track,
+                .cert-carousel-wrapper:hover .cert-track-rtl {
+                    animation-play-state: paused;
+                }
+                @keyframes cert-scroll-ltr {
+                    0%   { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+                @keyframes cert-scroll-rtl {
+                    0%   { transform: translateX(-50%); }
+                    100% { transform: translateX(0); }
+                }
+                .cert-card {
+                    flex-shrink: 0;
+                    width: 240px;
+                    background: #243320;
+                    border: 1px solid #374151;
+                    border-radius: 10px;
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    transition: border-color 0.2s;
+                }
+                .cert-card:hover {
+                    border-color: rgba(172,200,162,0.5);
+                }
+            </style>
 
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Mastering AI Agents Bootcamp</h3>
-                            <p class="cert-issuer">Udemy | Jan 2026</p>
-                        </div>
-                        <p class="cert-skills">Smart Chatbots, AI Agents</p>
-                        <a href="https://drive.google.com/file/d/15avf_5mwNPSZhASrt-fwFJoiOiRnq1xL/view?usp=drive_link" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Brand Management with Generative AI</h3>
-                            <p class="cert-issuer">Udemy | Jan 2026</p>
-                        </div>
-                        <p class="cert-skills">Generative Workflow, Branding Strategy</p>
-                        <a href="https://drive.google.com/file/d/1eaWMKr_lIwUWIXzNY7U7gHPZCgjef07q/view?usp=drive_link" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Vibe Coding with Vercel v0</h3>
-                            <p class="cert-issuer">Udemy | Jan 2026</p>
-                        </div>
-                        <p class="cert-skills">Vercel, MVP Development, AI Coding</p>
-                        <a href="https://drive.google.com/file/d/16CiAcadw1uOchWgYbEi2Pd4xmG7h5MWp/view?usp=drive_link" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Vibe Coding Camp</h3>
-                            <p class="cert-issuer">Udemy | Jan 2026</p>
-                        </div>
-                        <p class="cert-skills">Github Copilot, Cursor, Lovable, Windsurf</p>
-                        <a href="https://drive.google.com/file/d/1VicCtv_y7gjhgYIooE78ysuL6NurjWbl/view?usp=drive_link" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Claude with the Anthropic API</h3>
-                            <p class="cert-issuer">Anthropic | Oct 2025</p>
-                        </div>
-                        <p class="cert-skills">LLM Integration, API Usage</p>
-                        <a href="https://drive.google.com/file/d/1l_4VD-ZY5ne_WPCDggmY_iBzdSA4Kvdw/view?usp=drive_link" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Introduction to AI Concepts</h3>
-                            <p class="cert-issuer">Microsoft | Sep 2025</p>
-                        </div>
-                        <p class="cert-skills">Foundational AI knowledge</p>
-                        <a href="https://drive.google.com/file/d/1BQq6rZsDJhkuF-7WCSSJ4QsdrA06lqbJ/view?usp=drive_link" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Job Application Essentials</h3>
-                            <p class="cert-issuer">IBM SkillsBuild | Jan 2026</p>
-                        </div>
-                        <p class="cert-skills">Professional Development</p>
-                        <a href="ADD_CERTIFICATE_LINK_HERE" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Photoshop AI for Creatives</h3>
-                            <p class="cert-issuer">Udemy | Jan 2026</p>
-                        </div>
-                        <p class="cert-skills">Generative Tools in Media</p>
-                        <a href="ADD_CERTIFICATE_LINK_HERE" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Lovable AI: Complete Guide</h3>
-                            <p class="cert-issuer">Udemy | Jan 2026</p>
-                        </div>
-                        <p class="cert-skills">Vibe Coding, Rapid Prototyping</p>
-                        <a href="ADD_CERTIFICATE_LINK_HERE" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Introduction to Psychology</h3>
-                            <p class="cert-issuer">NPTEL | Jan-Mar 2025</p>
-                        </div>
-                        <p class="cert-skills">Behavioral Science</p>
-                        <a href="ADD_CERTIFICATE_LINK_HERE" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Windsurf for Beginners</h3>
-                            <p class="cert-issuer">Udemy | Jan 2026</p>
-                        </div>
-                        <p class="cert-skills">AI Coding Crash Course</p>
-                        <a href="ADD_CERTIFICATE_LINK_HERE" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Describe Cloud Computing</h3>
-                            <p class="cert-issuer">Microsoft | Sep 2025</p>
-                        </div>
-                        <p class="cert-skills">Cloud Fundamentals</p>
-                        <a href="ADD_CERTIFICATE_LINK_HERE" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Core Architectural Components of Azure</h3>
-                            <p class="cert-issuer">Microsoft | Sep 2025</p>
-                        </div>
-                        <p class="cert-skills">Azure Architecture</p>
-                        <a href="ADD_CERTIFICATE_LINK_HERE" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Project Management Fundamentals</h3>
-                            <p class="cert-issuer">IBM SkillsBuild | Jan 2026</p>
-                        </div>
-                        <p class="cert-skills">Agile, Team Leadership</p>
-                        <a href="ADD_CERTIFICATE_LINK_HERE" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Describe Cloud Service Types</h3>
-                            <p class="cert-issuer">Microsoft | Sep 2025</p>
-                        </div>
-                        <p class="cert-skills">SaaS, PaaS, IaaS</p>
-                        <a href="ADD_CERTIFICATE_LINK_HERE" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>AI Fluency: Framework & Foundations</h3>
-                            <p class="cert-issuer">Anthropic & UCC</p>
-                        </div>
-                        <p class="cert-skills">AI Ethics, Application Frameworks</p>
-                        <a href="ADD_CERTIFICATE_LINK_HERE" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>AI for Cloud Infrastructure</h3>
-                            <p class="cert-issuer">Udemy | Jan 2026</p>
-                        </div>
-                        <p class="cert-skills">Automating AWS with StationOps</p>
-                        <a href="ADD_CERTIFICATE_LINK_HERE" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Benefits of Using Cloud Services</h3>
-                            <p class="cert-issuer">Microsoft | Sep 2025</p>
-                        </div>
-                        <p class="cert-skills">Cloud Economics</p>
-                        <a href="ADD_CERTIFICATE_LINK_HERE" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Cloud Computing Fundamentals</h3>
-                            <p class="cert-issuer">IBM SkillsBuild | Jan 2026</p>
-                        </div>
-                        <p class="cert-skills">Cloud Ecosystems</p>
-                        <a href="ADD_CERTIFICATE_LINK_HERE" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>AI Fluency for Students</h3>
-                            <p class="cert-issuer">Anthropic & UCC</p>
-                        </div>
-                        <p class="cert-skills">Core AI Systems</p>
-                        <a href="ADD_CERTIFICATE_LINK_HERE" class="cert-link">View Certificate</a>
-                    </div>
-
-                    <div class="cert-card">
-                        <div class="cert-header">
-                            <h3>Introduction to Generative AI Concepts</h3>
-                            <p class="cert-issuer">Microsoft | Sep 2025</p>
-                        </div>
-                        <p class="cert-skills">Gen AI Operations</p>
-                        <a href="ADD_CERTIFICATE_LINK_HERE" class="cert-link">View Certificate</a>
-                    </div>
-
+            <div class="cert-carousel-wrapper mb-4">
+                <!-- Row 1: Left to Right — certs 1–13 (duplicated for infinite loop) -->
+                <div class="cert-track" id="row1">
+                    <!-- Original set -->
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Cloud Computing Fundamentals</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cloud architecture & cloud concepts.</p><a href="https://drive.google.com/file/d/1CUd9Y-Z1AkSaeLwLLFrViNcWaBjwP94v/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Job Application Essentials</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Professional development and readiness.</p><a href="https://drive.google.com/file/d/1vQxPx-1VWOpwzDkyNHGFIe8KfI45A5Hd/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Project Management Fundamentals</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Agile frameworks & team coordination.</p><a href="https://drive.google.com/file/d/1WA8eiE7tt6l-l4eeUoCMVdHL9fQo_wxn/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Intro to Generative AI Concepts</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">LLMs, foundational generative models.</p><a href="https://drive.google.com/file/d/1ZUZr4wbSS8cfLki6UAgU7vq5awFTXPYd/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Introduction to AI Concepts</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Machine learning fundamentals.</p><a href="https://drive.google.com/file/d/1BQq6rZsDJhkuF-7WCSSJ4QsdrA06lqbJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Core Architectural Components of Azure</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Azure infrastructure and deployment.</p><a href="https://drive.google.com/file/d/1zlOdWilwifa_i8IeTeQ4ecfmQB_2Sge4/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Describe Cloud Computing</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cloud hosting, VMs, and scaling basics.</p><a href="https://drive.google.com/file/d/1DdJqfRyZ_lDYBJ60f6FAPDsmk25RMIeb/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Describe Cloud Service Types</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">IaaS, PaaS, SaaS architectures.</p><a href="https://drive.google.com/file/d/1GHUqZKKsIBwxrPhHNtgxXzzj3o2tVr92/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Benefits of using Cloud Services</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">High availability, security & agility.</p><a href="https://drive.google.com/file/d/1r2fZ8AUFWujGIos0uk6ZUz_eRag3AhgJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">GenAI Powered Data Analytics Job Simulation</h4><p class="text-xs text-primary font-semibold mb-2">Forage (Tata)</p><p class="text-xs text-gray-400 mb-4 flex-grow">Predicting delinquency, EDA, reporting.</p><a href="https://drive.google.com/file/d/1cozguVbOLPwmfr9eEw6HKRrgCnCr-Y1U/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Mastering AI Agents Bootcamp</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Building smart conversational agents.</p><a href="https://drive.google.com/file/d/15avf_5mwNPSZhASrt-fwFJoiOiRnq1xL/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Brand Management with Generative AI</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">AI in marketing and asset generation.</p><a href="https://drive.google.com/file/d/1eaWMKr_lIwUWIXzNY7U7gHPZCgjef07q/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Vibe Coding with Vercel v0</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">From Idea to MVP via AI UI generation.</p><a href="https://drive.google.com/file/d/16CiAcadw1uOchWgYbEi2Pd4xmG7h5MWp/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <!-- Duplicate set for seamless loop -->
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Cloud Computing Fundamentals</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cloud architecture & cloud concepts.</p><a href="https://drive.google.com/file/d/1CUd9Y-Z1AkSaeLwLLFrViNcWaBjwP94v/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Job Application Essentials</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Professional development and readiness.</p><a href="https://drive.google.com/file/d/1vQxPx-1VWOpwzDkyNHGFIe8KfI45A5Hd/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Project Management Fundamentals</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Agile frameworks & team coordination.</p><a href="https://drive.google.com/file/d/1WA8eiE7tt6l-l4eeUoCMVdHL9fQo_wxn/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Intro to Generative AI Concepts</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">LLMs, foundational generative models.</p><a href="https://drive.google.com/file/d/1ZUZr4wbSS8cfLki6UAgU7vq5awFTXPYd/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Introduction to AI Concepts</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Machine learning fundamentals.</p><a href="https://drive.google.com/file/d/1BQq6rZsDJhkuF-7WCSSJ4QsdrA06lqbJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Core Architectural Components of Azure</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Azure infrastructure and deployment.</p><a href="https://drive.google.com/file/d/1zlOdWilwifa_i8IeTeQ4ecfmQB_2Sge4/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Describe Cloud Computing</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cloud hosting, VMs, and scaling basics.</p><a href="https://drive.google.com/file/d/1DdJqfRyZ_lDYBJ60f6FAPDsmk25RMIeb/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Describe Cloud Service Types</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">IaaS, PaaS, SaaS architectures.</p><a href="https://drive.google.com/file/d/1GHUqZKKsIBwxrPhHNtgxXzzj3o2tVr92/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Benefits of using Cloud Services</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">High availability, security & agility.</p><a href="https://drive.google.com/file/d/1r2fZ8AUFWujGIos0uk6ZUz_eRag3AhgJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">GenAI Powered Data Analytics Job Simulation</h4><p class="text-xs text-primary font-semibold mb-2">Forage (Tata)</p><p class="text-xs text-gray-400 mb-4 flex-grow">Predicting delinquency, EDA, reporting.</p><a href="https://drive.google.com/file/d/1cozguVbOLPwmfr9eEw6HKRrgCnCr-Y1U/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Mastering AI Agents Bootcamp</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Building smart conversational agents.</p><a href="https://drive.google.com/file/d/15avf_5mwNPSZhASrt-fwFJoiOiRnq1xL/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Brand Management with Generative AI</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">AI in marketing and asset generation.</p><a href="https://drive.google.com/file/d/1eaWMKr_lIwUWIXzNY7U7gHPZCgjef07q/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Vibe Coding with Vercel v0</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">From Idea to MVP via AI UI generation.</p><a href="https://drive.google.com/file/d/16CiAcadw1uOchWgYbEi2Pd4xmG7h5MWp/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
                 </div>
             </div>
-            
-            <button class="carousel-btn btn-next" aria-label="Next Certifications">
-                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
+
+            <div class="cert-carousel-wrapper mt-2">
+                <!-- Row 2: Right to Left — certs 14–25 (duplicated for infinite loop) -->
+                <div class="cert-track cert-track-rtl" id="row2">
+                    <!-- Original set -->
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Vibe Coding Camp: GitHub Copilot, Cursor</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Mastering AI IDEs & code generation.</p><a href="https://drive.google.com/file/d/1VicCtv_y7gjhgYIooE78ysuL6NurjWbl/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Photoshop AI for Creatives</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Guide to generative visual tools.</p><a href="https://drive.google.com/file/d/1D-CCbKGCWGiGQsh3ybZahLRMy_sBFWm6/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Lovable AI: Complete Guide</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Vibe coding application workflows.</p><a href="https://drive.google.com/file/d/1yxjuSQsLgF5GazbXCK-RJr37hhYfG_yw/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Windsurf for Beginners</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">AI Coding IDE crash course.</p><a href="https://drive.google.com/file/d/1s4oQp1pvVP1m7toCZw_wKgS0qCfky3jg/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI for Cloud Infrastructure</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Automating AWS environments.</p><a href="https://drive.google.com/file/d/1vaiqIO4hAVaS3p3T7n6KWfM5wxzZr8hJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Intro to Model Context Protocol</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic</p><p class="text-xs text-gray-400 mb-4 flex-grow">MCP architectures for IDEs & Agents.</p><a href="https://drive.google.com/file/d/1hSyTIRSAW49wGGuaSwfYlhkNoS-njWDg/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Claude with the Anthropic API</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic</p><p class="text-xs text-gray-400 mb-4 flex-grow">Building robust applications with Claude.</p><a href="https://drive.google.com/file/d/1l_4VD-ZY5ne_WPCDggmY_iBzdSA4Kvdw/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI Fluency: Framework & Foundations</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic / UCC</p><p class="text-xs text-gray-400 mb-4 flex-grow">Core AI literacy & evaluation frameworks.</p><a href="https://drive.google.com/file/d/1K5FaTGwzrF3ErPtSg9wlm7-kt9IHhe_T/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI Fluency for Students</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic / UCC</p><p class="text-xs text-gray-400 mb-4 flex-grow">Applied AI safety and usage.</p><a href="https://drive.google.com/file/d/1t9UB5o9Z0UwQSz_RjePMbod-cPqmXD6K/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Introduction to Psychology</h4><p class="text-xs text-primary font-semibold mb-2">NPTEL (SWAYAM)</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cognitive processing & user behavior.</p><a href="https://drive.google.com/file/d/1ovxAc16RDlDgV97HgkEGO6b5Vna0O_C1/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Fundamentals of AI Agents</h4><p class="text-xs text-primary font-semibold mb-2">Hugging Face</p><p class="text-xs text-gray-400 mb-4 flex-grow">Autonomous model routing & tasks.</p><a href="https://drive.google.com/file/d/130Me3WDDDDB1yVpqUp9lHrt88wkbia7g/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Zoho Young Creator Program</h4><p class="text-xs text-primary font-semibold mb-2">Zoho</p><p class="text-xs text-gray-400 mb-4 flex-grow">App development & logic creation.</p><a href="https://drive.google.com/file/d/18JEWGXARW0A6Xuxhs3Aa4NWS0QRK5zi3/view?usp=sharing" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <!-- Duplicate set for seamless loop -->
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Vibe Coding Camp: GitHub Copilot, Cursor</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Mastering AI IDEs & code generation.</p><a href="https://drive.google.com/file/d/1VicCtv_y7gjhgYIooE78ysuL6NurjWbl/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Photoshop AI for Creatives</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Guide to generative visual tools.</p><a href="https://drive.google.com/file/d/1D-CCbKGCWGiGQsh3ybZahLRMy_sBFWm6/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Lovable AI: Complete Guide</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Vibe coding application workflows.</p><a href="https://drive.google.com/file/d/1yxjuSQsLgF5GazbXCK-RJr37hhYfG_yw/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Windsurf for Beginners</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">AI Coding IDE crash course.</p><a href="https://drive.google.com/file/d/1s4oQp1pvVP1m7toCZw_wKgS0qCfky3jg/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI for Cloud Infrastructure</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Automating AWS environments.</p><a href="https://drive.google.com/file/d/1vaiqIO4hAVaS3p3T7n6KWfM5wxzZr8hJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Intro to Model Context Protocol</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic</p><p class="text-xs text-gray-400 mb-4 flex-grow">MCP architectures for IDEs & Agents.</p><a href="https://drive.google.com/file/d/1hSyTIRSAW49wGGuaSwfYlhkNoS-njWDg/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Claude with the Anthropic API</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic</p><p class="text-xs text-gray-400 mb-4 flex-grow">Building robust applications with Claude.</p><a href="https://drive.google.com/file/d/1l_4VD-ZY5ne_WPCDggmY_iBzdSA4Kvdw/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI Fluency: Framework & Foundations</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic / UCC</p><p class="text-xs text-gray-400 mb-4 flex-grow">Core AI literacy & evaluation frameworks.</p><a href="https://drive.google.com/file/d/1K5FaTGwzrF3ErPtSg9wlm7-kt9IHhe_T/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI Fluency for Students</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic / UCC</p><p class="text-xs text-gray-400 mb-4 flex-grow">Applied AI safety and usage.</p><a href="https://drive.google.com/file/d/1t9UB5o9Z0UwQSz_RjePMbod-cPqmXD6K/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Introduction to Psychology</h4><p class="text-xs text-primary font-semibold mb-2">NPTEL (SWAYAM)</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cognitive processing & user behavior.</p><a href="https://drive.google.com/file/d/1ovxAc16RDlDgV97HgkEGO6b5Vna0O_C1/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Fundamentals of AI Agents</h4><p class="text-xs text-primary font-semibold mb-2">Hugging Face</p><p class="text-xs text-gray-400 mb-4 flex-grow">Autonomous model routing & tasks.</p><a href="https://drive.google.com/file/d/130Me3WDDDDB1yVpqUp9lHrt88wkbia7g/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Zoho Young Creator Program</h4><p class="text-xs text-primary font-semibold mb-2">Zoho</p><p class="text-xs text-gray-400 mb-4 flex-grow">App development & logic creation.</p><a href="https://drive.google.com/file/d/18JEWGXARW0A6Xuxhs3Aa4NWS0QRK5zi3/view?usp=sharing" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- EDUCATION SECTION -->
-    <section id="education">
-        <h2 class="section-title">Education</h2>
-        <div class="edu-card">
-            <h3>Bachelor of Technology - Computer Science and Engineering</h3>
-            <p class="edu-meta">Women's Engineering College, Puducherry | Dec 2022 - Jun 2026 | CGPA: 6.55</p>
-            <p><strong>Core Coursework:</strong> Machine Learning, Artificial Intelligence, Data Structures and Algorithms, Database Management Systems, Computer Networks.</p>
+    <section class="py-20 bg-cardBg/30 border-y border-primary/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-10 text-white"><span class="text-primary"></span> Education</h2>
+            
+            <div class="space-y-6">
+                <div class="bg-bgMain p-6 rounded-xl border-l-4 border-primary">
+                    <h3 class="text-xl font-bold text-white">B.Tech - Computer Science and Engineering</h3>
+                    <p class="text-secondary font-medium mt-1">Women’s Engineering College, Puducherry</p>
+                    <div class="flex items-center gap-4 mt-3 text-sm text-gray-400">
+                        <span><i class="far fa-calendar-alt mr-1"></i> Dec 2022 - Present</span>
+                        <span><i class="fas fa-chart-line mr-1"></i> CGPA: 6.55</span>
+                    </div>
+                    <p class="mt-3 text-gray-400 text-sm">Coursework: Machine Learning, Artificial Intelligence, DSA, Operating Systems, DBMS.</p>
+                </div>
+
+                <div class="bg-bgMain p-6 rounded-xl border-l-4 border-gray-700">
+                    <h3 class="text-xl font-bold text-white">Higher Secondary, Computer Science</h3>
+                    <p class="text-secondary font-medium mt-1">Immaculate Heart of Mary Higher Secondary School</p>
+                    <div class="flex items-center gap-4 mt-3 text-sm text-gray-400">
+                        <span><i class="far fa-calendar-alt mr-1"></i> 2020 - 2022</span>
+                        <span><i class="fas fa-chart-line mr-1"></i> 77%</span>
+                    </div>
+                    <div class="bg-bgMain p-6 rounded-xl border-l-4 border-gray-700">
+                    <h3 class="text-xl font-bold text-white">High School Education</h3>
+                    <p class="text-secondary font-medium mt-1">Immaculate Heart of Mary Higher Secondary School</p>
+                    <div class="flex items-center gap-4 mt-3 text-sm text-gray-400">
+                        <span><i class="far fa-calendar-alt mr-1"></i> 2019 - 2020</span>
+                        <span><i class="fas fa-chart-line mr-1"></i> 79%</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact">
-        <div class="contact-wrapper">
-            <h2>Let's Build Intelligent Systems.</h2>
-            <p>Open to opportunities in AI, NLP, and Software Engineering roles.</p>
-            
-            <div class="contact-links">
-                <a href="mailto:anushasundaramurthi@gmail.com" class="btn btn-primary">
-                    <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    Email Me
+  <!-- CONTACT SECTION -->
+    <section id="contact" class="py-28 bg-bgMain border-t border-primary/10" style="min-height: 65vh; display: flex; align-items: center;">
+        <div class="max-w-3xl mx-auto px-4 text-center w-full">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-5 tracking-tight">
+                Let's Build Something Great
+            </h2>
+            <p class="text-lg md:text-xl text-gray-400 max-w-xl mx-auto mb-10 leading-relaxed font-medium">
+                Open to opportunities in AI / Software / IoT roles. Let's discuss how my experience in shipping production AI systems can help your team.
+            </p>
+
+            <!-- Say Hello Button -->
+            <a href="mailto:anushasundaramurthi@gmail.com"
+               class="inline-flex items-center gap-2 px-10 py-4 rounded-xl text-base font-bold text-[#1A2517] bg-primary hover:bg-secondary transition-all shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:-translate-y-0.5 mb-12">
+                Say Hello
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </a>
+
+            <!-- Social Icon Links -->
+            <div class="flex items-center justify-center gap-8">
+                <a href="mailto:anushasundaramurthi@gmail.com" aria-label="Email"
+                   class="text-gray-400 hover:text-primary transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </a>
-                <a href="https://linkedin.com/in/anusha-sundaramurthi1728" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                    <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                    LinkedIn
+                <a href="https://linkedin.com/in/anusha-sundaramurthi1728" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+                   class="text-gray-400 hover:text-primary transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
-                <a href="https://github.com/anusha-sundaramurthi" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                    <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    GitHub
+                <a href="https://github.com/anusha-sundaramurthi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+                   class="text-gray-400 hover:text-primary transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 </a>
             </div>
         </div>
