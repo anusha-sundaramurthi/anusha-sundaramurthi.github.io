@@ -64,8 +64,10 @@
         .cert-carousel-wrapper:hover .cert-track-rtl { animation-play-state: paused; }
         @keyframes cert-scroll-ltr { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes cert-scroll-rtl { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
-        .cert-card { flex-shrink: 0; width: 200px; background: #243320; border: 1px solid #374151; border-radius: 10px; padding: 16px; display: flex; flex-direction: column; transition: border-color 0.2s; }
-        @media (min-width: 640px) { .cert-card { width: 240px; padding: 20px; } }
+        .cert-card { flex-shrink: 0; width: 220px; background: #243320; border: 1px solid #374151; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; transition: border-color 0.2s; }
+        @media (min-width: 640px)  { .cert-card { width: 260px; padding: 20px; } }
+        @media (min-width: 1024px) { .cert-card { width: 300px; padding: 24px; } }
+        @media (min-width: 1280px) { .cert-card { width: 320px; padding: 26px; } }
         .cert-card:hover { border-color: rgba(172,200,162,0.5); }
 
         /* Full-width section wrapper */
@@ -109,12 +111,12 @@
     </nav>
 
     <!-- HERO -->
-    <header id="about" class="pt-28 pb-16 sm:pt-36 sm:pb-20 md:pt-48 md:pb-32 min-h-[90vh] w-full">
+    <header id="about" class="pt-24 pb-12 sm:pt-32 sm:pb-16 md:pt-40 md:pb-20 min-h-[85vh] w-full">
         <div class="section-inner flex flex-col md:flex-row md:items-center md:justify-between gap-10 h-full">
             <div class="w-full md:w-2/3">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl font-extrabold text-white tracking-tight mb-4">Anusha Sundaramurthi</h1>
-                <h2 class="text-2xl sm:text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold mb-6 gradient-text">AI & NLP Engineer</h2>
-                <p class="text-base sm:text-lg md:text-xl xl:text-2xl text-gray-400 max-w-2xl mb-8 leading-relaxed">
+                <h1 class="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl font-extrabold text-white tracking-tight mb-4 whitespace-nowrap">Anusha Sundaramurthi</h1>
+                <h2 class="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-bold mb-6 gradient-text">AI & NLP Engineer</h2>
+                <p class="text-sm sm:text-base md:text-base lg:text-lg xl:text-xl text-gray-400 max-w-2xl mb-8 leading-relaxed">
                     I build scalable, production-ready AI systems, fully local RAG pipelines, and conversational agents. Focused on optimizing inference, reducing latency, and delivering real-world value.
                 </p>
                 <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-10">
@@ -160,49 +162,49 @@
     <section id="skills" class="py-16 sm:py-20 bg-cardBg/30 border-y border-primary/10 w-full">
         <div class="section-inner">
             <h2 class="text-2xl sm:text-3xl xl:text-4xl 2xl:text-5xl font-bold mb-10 sm:mb-12 text-white">Technical Arsenal</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-                <div class="skill-card bg-cardBg p-5 sm:p-6 rounded-xl border border-primary/20">
-                    <h3 class="text-lg sm:text-xl font-semibold mb-4 text-secondary"><i class="fas fa-code mr-2 skill-icon"></i>Languages</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <div class="skill-card bg-cardBg p-5 sm:p-6 xl:p-8 rounded-xl border border-primary/20">
+                    <h3 class="text-lg sm:text-xl xl:text-2xl font-semibold mb-4 text-secondary"><i class="fas fa-code mr-2 skill-icon"></i>Languages</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Python (Advanced)</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">C/C++</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">JavaScript</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">TypeScript</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">HTML/CSS</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">Python (Advanced)</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">C/C++</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">JavaScript</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">TypeScript</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">HTML/CSS</span>
                     </div>
                 </div>
-                <div class="skill-card bg-cardBg p-5 sm:p-6 rounded-xl border border-primary/20">
-                    <h3 class="text-lg sm:text-xl font-semibold mb-4 text-secondary"><i class="fas fa-brain mr-2 skill-icon"></i>AI & ML</h3>
+                <div class="skill-card bg-cardBg p-5 sm:p-6 xl:p-8 rounded-xl border border-primary/20">
+                    <h3 class="text-lg sm:text-xl xl:text-2xl font-semibold mb-4 text-secondary"><i class="fas fa-brain mr-2 skill-icon"></i>AI & ML</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">PyTorch</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">TensorFlow</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Hugging Face</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">LangChain</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">LlamaIndex</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Ollama</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">spaCy</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Scikit-learn</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">PyTorch</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">TensorFlow</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">Hugging Face</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">LangChain</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">LlamaIndex</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">Ollama</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">spaCy</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">Scikit-learn</span>
                     </div>
                 </div>
-                <div class="skill-card bg-cardBg p-5 sm:p-6 rounded-xl border border-primary/20">
-                    <h3 class="text-lg sm:text-xl font-semibold mb-4 text-secondary"><i class="fas fa-server mr-2 skill-icon"></i>Tools & Deployment</h3>
+                <div class="skill-card bg-cardBg p-5 sm:p-6 xl:p-8 rounded-xl border border-primary/20">
+                    <h3 class="text-lg sm:text-xl xl:text-2xl font-semibold mb-4 text-secondary"><i class="fas fa-server mr-2 skill-icon"></i>Tools & Deployment</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">FastAPI</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Flask</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Docker</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">AWS</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Git/GitHub</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">FAISS</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">MongoDB</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">MySQL</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">FastAPI</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">Flask</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">Docker</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">AWS</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">Git/GitHub</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">FAISS</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">MongoDB</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">MySQL</span>
                     </div>
                 </div>
-                <div class="skill-card bg-cardBg p-5 sm:p-6 rounded-xl border border-primary/20">
-                    <h3 class="text-lg sm:text-xl font-semibold mb-4 text-secondary"><i class="fas fa-microchip mr-2 skill-icon"></i>IoT & Hardware</h3>
+                <div class="skill-card bg-cardBg p-5 sm:p-6 xl:p-8 rounded-xl border border-primary/20">
+                    <h3 class="text-lg sm:text-xl xl:text-2xl font-semibold mb-4 text-secondary"><i class="fas fa-microchip mr-2 skill-icon"></i>IoT & Hardware</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Raspberry Pi</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">IoT Sensors</span>
-                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm border border-gray-700">Firebase (IoT Data)</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">Raspberry Pi</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">IoT Sensors</span>
+                        <span class="skill-tag px-3 py-1 bg-bgMain rounded text-sm xl:text-base border border-gray-700">Firebase (IoT Data)</span>
                     </div>
                 </div>
             </div>
