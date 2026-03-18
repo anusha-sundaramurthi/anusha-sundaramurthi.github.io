@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anusha Sundaramurthi | AI & NLP Engineer Portfolio</title>
     <meta name="description" content="Portfolio of Anusha Sundaramurthi, an AI & NLP Engineer specializing in Generative AI, RAG pipelines, and scalable production-ready AI systems.">
-    <meta name="keywords" content="Anusha Sundaramurthi, AI Engineer, NLP, Generative AI, RAG, Python, FastAPI, Portfolio">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -18,22 +17,24 @@
                         primary: '#ACC8A2',
                         secondary: '#8aaf80',
                     },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    }
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
                 }
             }
         }
     </script>
     <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { width: 100%; margin: 0; padding: 0; overflow-x: hidden; }
         body { background-color: #1A2517; color: #f3f4f6; -webkit-font-smoothing: antialiased; }
         ::selection { background-color: #ACC8A2; color: white; }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #1A2517; }
         ::-webkit-scrollbar-thumb { background: #243320; border-radius: 4px; border: 1px solid #ACC8A2; }
+
         .gradient-text { background: linear-gradient(90deg, #ACC8A2, #8aaf80); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .card-hover-effect { transition: all 0.3s ease; border: 1px solid rgba(0,102,255,0.2); }
         .card-hover-effect:hover { transform: translateY(-4px); border-color: #8aaf80; box-shadow: 0 10px 30px -10px rgba(0,102,255,0.3); }
+
         .skill-card { transition: all 0.3s ease; position: relative; overflow: hidden; }
         .skill-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(172,200,162,0.07) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
         .skill-card:hover { transform: translateY(-5px); border-color: #ACC8A2 !important; box-shadow: 0 12px 32px -8px rgba(172,200,162,0.25); }
@@ -67,19 +68,21 @@
         @media (min-width: 640px) { .cert-card { width: 240px; padding: 20px; } }
         .cert-card:hover { border-color: rgba(172,200,162,0.5); }
 
-        /* Footer */
+        /* Full-width section wrapper */
+        .section-inner { width: 100%; max-width: 1600px; margin-left: auto; margin-right: auto; padding-left: 1.5rem; padding-right: 1.5rem; }
+        @media (min-width: 1024px) { .section-inner { padding-left: 4rem; padding-right: 4rem; } }
+        @media (min-width: 1280px) { .section-inner { padding-left: 6rem; padding-right: 6rem; } }
+
         footer { background-color: #1A2517; border-top: 1px solid rgba(172,200,162,0.1); text-align: center; padding: 24px 16px; color: #6b7280; font-size: 0.875rem; }
     </style>
 </head>
-<body class="font-sans antialiased text-gray-200">
+<body>
 
     <!-- NAVIGATION -->
     <nav class="fixed w-full z-50 bg-bgMain/90 backdrop-blur-md border-b border-primary/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="section-inner">
             <div class="flex items-center justify-between h-16">
                 <span class="text-xl font-bold tracking-tighter text-white"></span>
-
-                <!-- Desktop links -->
                 <div class="hidden md:flex items-baseline space-x-6 lg:space-x-8">
                     <a href="#about"          class="hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
                     <a href="#skills"         class="hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
@@ -87,16 +90,12 @@
                     <a href="#certifications" class="hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors">Certifications</a>
                     <a href="#contact"        class="hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
                 </div>
-
-                <!-- Hamburger (mobile) -->
                 <button id="menuBtn" aria-label="Toggle menu" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 rounded focus:outline-none">
-                    <span class="block w-6 h-0.5 bg-gray-200 transition-all"></span>
-                    <span class="block w-6 h-0.5 bg-gray-200 transition-all"></span>
-                    <span class="block w-6 h-0.5 bg-gray-200 transition-all"></span>
+                    <span class="block w-6 h-0.5 bg-gray-200"></span>
+                    <span class="block w-6 h-0.5 bg-gray-200"></span>
+                    <span class="block w-6 h-0.5 bg-gray-200"></span>
                 </button>
             </div>
-
-            <!-- Mobile dropdown -->
             <div id="navLinks" class="md:hidden pb-4 gap-1">
                 <a href="#about"          class="block hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
                 <a href="#skills"         class="block hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
@@ -108,62 +107,56 @@
     </nav>
 
     <!-- HERO -->
-    <header id="about" class="pt-28 pb-16 sm:pt-36 sm:pb-20 md:pt-48 md:pb-32 px-4 max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-10 min-h-[90vh]">
-        <div class="w-full md:w-2/3">
-            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-4">
-                Anusha Sundaramurthi
-            </h1>
-            <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 gradient-text">
-                AI & NLP Engineer
-            </h2>
-            <p class="text-base sm:text-xl md:text-2xl text-gray-400 max-w-3xl mb-8 leading-relaxed">
-                I build scalable, production-ready AI systems, fully local RAG pipelines, and conversational agents. Focused on optimizing inference, reducing latency, and delivering real-world value.
-            </p>
-            <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-10">
-                <span class="px-3 sm:px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-xs sm:text-sm font-semibold text-secondary">Python</span>
-                <span class="px-3 sm:px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-xs sm:text-sm font-semibold text-secondary">FastAPI</span>
-                <span class="px-3 sm:px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-xs sm:text-sm font-semibold text-secondary">Hugging Face</span>
-                <span class="px-3 sm:px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-xs sm:text-sm font-semibold text-secondary">LangChain</span>
-                <span class="px-3 sm:px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-xs sm:text-sm font-semibold text-secondary">AWS</span>
-                <span class="px-3 sm:px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-xs sm:text-sm font-semibold text-secondary">RAG</span>
+    <header id="about" class="pt-28 pb-16 sm:pt-36 sm:pb-20 md:pt-48 md:pb-32 min-h-[90vh] w-full">
+        <div class="section-inner flex flex-col md:flex-row md:items-center md:justify-between gap-10 h-full">
+            <div class="w-full md:w-2/3">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold text-white tracking-tight mb-4">Anusha Sundaramurthi</h1>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold mb-6 gradient-text">AI & NLP Engineer</h2>
+                <p class="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mb-8 leading-relaxed">
+                    I build scalable, production-ready AI systems, fully local RAG pipelines, and conversational agents. Focused on optimizing inference, reducing latency, and delivering real-world value.
+                </p>
+                <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-10">
+                    <span class="px-3 sm:px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-xs sm:text-sm font-semibold text-secondary">Python</span>
+                    <span class="px-3 sm:px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-xs sm:text-sm font-semibold text-secondary">FastAPI</span>
+                    <span class="px-3 sm:px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-xs sm:text-sm font-semibold text-secondary">Hugging Face</span>
+                    <span class="px-3 sm:px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-xs sm:text-sm font-semibold text-secondary">LangChain</span>
+                    <span class="px-3 sm:px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-xs sm:text-sm font-semibold text-secondary">AWS</span>
+                    <span class="px-3 sm:px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full text-xs sm:text-sm font-semibold text-secondary">RAG</span>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                    <a href="#projects" class="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold rounded-lg text-[#1A2517] bg-primary hover:bg-[#8aaf80] transition-colors shadow-lg shadow-[#ACC8A2]/30">View My Work</a>
+                    <a href="https://github.com/anusha-sundaramurthi" target="_blank" class="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold rounded-lg text-white bg-cardBg border border-primary/50 hover:border-secondary hover:text-secondary transition-colors">
+                        <i class="fab fa-github mr-2 text-lg sm:text-xl"></i> GitHub
+                    </a>
+                    <a href="https://docs.google.com/document/d/1aARHbDUXjzAyf2OZCoFZV6OZ0CXg_AI9/edit?usp=drive_link&ouid=102593113041190262221&rtpof=true&sd=true" target="_blank" class="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold rounded-lg text-[#1A2517] bg-primary hover:bg-[#8aaf80] transition-colors shadow-lg shadow-[#ACC8A2]/30">Download Resume</a>
+                </div>
             </div>
-            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <a href="#projects" class="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold rounded-lg text-[#1A2517] bg-primary hover:bg-[#8aaf80] transition-colors shadow-lg shadow-[#ACC8A2]/30">
-                    View My Work
-                </a>
-                <a href="https://github.com/anusha-sundaramurthi" target="_blank" class="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold rounded-lg text-white bg-cardBg border border-primary/50 hover:border-secondary hover:text-secondary transition-colors">
-                    <i class="fab fa-github mr-2 text-lg sm:text-xl"></i> GitHub
-                </a>
-                <a href="https://docs.google.com/document/d/1aARHbDUXjzAyf2OZCoFZV6OZ0CXg_AI9/edit?usp=drive_link&ouid=102593113041190262221&rtpof=true&sd=true" target="_blank" class="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold rounded-lg text-[#1A2517] bg-primary hover:bg-[#8aaf80] transition-colors shadow-lg shadow-[#ACC8A2]/30">
-                    Download Resume
-                </a>
-            </div>
-        </div>
-        <div class="w-full md:w-1/3">
-            <div class="bg-cardBg border border-primary/20 rounded-2xl p-6 shadow-xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl -mr-10 -mt-10"></div>
-                <h3 class="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">Impact Highlights</h3>
-                <ul class="space-y-4 text-sm text-gray-300">
-                    <li class="flex items-start">
-                        <svg class="w-5 h-5 text-primary mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                        <span>Reduced LLM API latency by <strong>35%</strong> using optimized FastAPI architectures.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <svg class="w-5 h-5 text-primary mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span>Improved model precision by <strong>20%</strong> via BERT embeddings and custom NER.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <svg class="w-5 h-5 text-primary mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span>Cut cloud LLM costs by <strong>100%</strong> utilizing local RAG architectures.</span>
-                    </li>
-                </ul>
+            <div class="w-full md:w-1/3">
+                <div class="bg-cardBg border border-primary/20 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl -mr-10 -mt-10"></div>
+                    <h3 class="text-lg font-bold text-white mb-4 border-b border-white/10 pb-2">Impact Highlights</h3>
+                    <ul class="space-y-4 text-sm text-gray-300">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-primary mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                            <span>Reduced LLM API latency by <strong>35%</strong> using optimized FastAPI architectures.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-primary mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Improved model precision by <strong>20%</strong> via BERT embeddings and custom NER.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-primary mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Cut cloud LLM costs by <strong>100%</strong> utilizing local RAG architectures.</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- SKILLS -->
-    <section id="skills" class="py-16 sm:py-20 bg-cardBg/30 border-y border-primary/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" class="py-16 sm:py-20 bg-cardBg/30 border-y border-primary/10 w-full">
+        <div class="section-inner">
             <h2 class="text-2xl sm:text-3xl font-bold mb-10 sm:mb-12 text-white">Technical Arsenal</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                 <div class="skill-card bg-cardBg p-5 sm:p-6 rounded-xl border border-primary/20">
@@ -215,8 +208,8 @@
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="py-16 sm:py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" class="py-16 sm:py-20 w-full">
+        <div class="section-inner">
             <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-white">Featured Engineering Projects</h2>
             <p class="text-gray-400 mb-10 sm:mb-12 max-w-2xl text-sm sm:text-base">A comprehensive showcase of end-to-end applications built, ranging from local RAG models to full-stack multi-modal AI agents.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
@@ -411,8 +404,8 @@
     </section>
 
     <!-- GITHUB HIGHLIGHT -->
-    <section class="py-14 sm:py-16 bg-cardBg/50 border-y border-primary/20">
-        <div class="max-w-7xl mx-auto px-4 text-center">
+    <section class="py-14 sm:py-16 bg-cardBg/50 border-y border-primary/20 w-full">
+        <div class="section-inner text-center">
             <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6">Built for Production & Open Source</h2>
             <p class="text-gray-400 max-w-2xl mx-auto mb-8 text-sm sm:text-base">
                 Every repository is structured for immediate deployment. You'll find clear architecture diagrams, requirement files, Docker configurations, and fully documented setup instructions.
@@ -424,80 +417,76 @@
     </section>
 
     <!-- CERTIFICATIONS -->
-    <section id="certifications" class="py-16 sm:py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="certifications" class="py-16 sm:py-20 w-full">
+        <div class="section-inner">
             <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-white">Credentials & Certifications</h2>
             <p class="text-gray-400 mb-10 sm:mb-12 text-sm sm:text-base">Continuous learning validated through 25 industry credentials across AI, Cloud, and Engineering.</p>
-
-            <div class="cert-carousel-wrapper mb-4">
-                <div class="cert-track">
-                    <!-- Row 1 original -->
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Cloud Computing Fundamentals</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cloud architecture & cloud concepts.</p><a href="https://drive.google.com/file/d/1CUd9Y-Z1AkSaeLwLLFrViNcWaBjwP94v/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Job Application Essentials</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Professional development and readiness.</p><a href="https://drive.google.com/file/d/1vQxPx-1VWOpwzDkyNHGFIe8KfI45A5Hd/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Project Management Fundamentals</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Agile frameworks & team coordination.</p><a href="https://drive.google.com/file/d/1WA8eiE7tt6l-l4eeUoCMVdHL9fQo_wxn/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Intro to Generative AI Concepts</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">LLMs, foundational generative models.</p><a href="https://drive.google.com/file/d/1ZUZr4wbSS8cfLki6UAgU7vq5awFTXPYd/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Introduction to AI Concepts</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Machine learning fundamentals.</p><a href="https://drive.google.com/file/d/1BQq6rZsDJhkuF-7WCSSJ4QsdrA06lqbJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Core Architectural Components of Azure</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Azure infrastructure and deployment.</p><a href="https://drive.google.com/file/d/1zlOdWilwifa_i8IeTeQ4ecfmQB_2Sge4/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Describe Cloud Computing</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cloud hosting, VMs, and scaling basics.</p><a href="https://drive.google.com/file/d/1DdJqfRyZ_lDYBJ60f6FAPDsmk25RMIeb/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Describe Cloud Service Types</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">IaaS, PaaS, SaaS architectures.</p><a href="https://drive.google.com/file/d/1GHUqZKKsIBwxrPhHNtgxXzzj3o2tVr92/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Benefits of using Cloud Services</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">High availability, security & agility.</p><a href="https://drive.google.com/file/d/1r2fZ8AUFWujGIos0uk6ZUz_eRag3AhgJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">GenAI Powered Data Analytics Job Simulation</h4><p class="text-xs text-primary font-semibold mb-2">Forage (Tata)</p><p class="text-xs text-gray-400 mb-4 flex-grow">Predicting delinquency, EDA, reporting.</p><a href="https://drive.google.com/file/d/1cozguVbOLPwmfr9eEw6HKRrgCnCr-Y1U/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Mastering AI Agents Bootcamp</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Building smart conversational agents.</p><a href="https://drive.google.com/file/d/15avf_5mwNPSZhASrt-fwFJoiOiRnq1xL/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Brand Management with Generative AI</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">AI in marketing and asset generation.</p><a href="https://drive.google.com/file/d/1eaWMKr_lIwUWIXzNY7U7gHPZCgjef07q/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Vibe Coding with Vercel v0</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">From Idea to MVP via AI UI generation.</p><a href="https://drive.google.com/file/d/16CiAcadw1uOchWgYbEi2Pd4xmG7h5MWp/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <!-- Row 1 duplicate for seamless loop -->
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Cloud Computing Fundamentals</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cloud architecture & cloud concepts.</p><a href="https://drive.google.com/file/d/1CUd9Y-Z1AkSaeLwLLFrViNcWaBjwP94v/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Job Application Essentials</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Professional development and readiness.</p><a href="https://drive.google.com/file/d/1vQxPx-1VWOpwzDkyNHGFIe8KfI45A5Hd/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Project Management Fundamentals</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Agile frameworks & team coordination.</p><a href="https://drive.google.com/file/d/1WA8eiE7tt6l-l4eeUoCMVdHL9fQo_wxn/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Intro to Generative AI Concepts</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">LLMs, foundational generative models.</p><a href="https://drive.google.com/file/d/1ZUZr4wbSS8cfLki6UAgU7vq5awFTXPYd/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Introduction to AI Concepts</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Machine learning fundamentals.</p><a href="https://drive.google.com/file/d/1BQq6rZsDJhkuF-7WCSSJ4QsdrA06lqbJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Core Architectural Components of Azure</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Azure infrastructure and deployment.</p><a href="https://drive.google.com/file/d/1zlOdWilwifa_i8IeTeQ4ecfmQB_2Sge4/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Describe Cloud Computing</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cloud hosting, VMs, and scaling basics.</p><a href="https://drive.google.com/file/d/1DdJqfRyZ_lDYBJ60f6FAPDsmk25RMIeb/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Describe Cloud Service Types</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">IaaS, PaaS, SaaS architectures.</p><a href="https://drive.google.com/file/d/1GHUqZKKsIBwxrPhHNtgxXzzj3o2tVr92/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Benefits of using Cloud Services</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">High availability, security & agility.</p><a href="https://drive.google.com/file/d/1r2fZ8AUFWujGIos0uk6ZUz_eRag3AhgJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">GenAI Powered Data Analytics Job Simulation</h4><p class="text-xs text-primary font-semibold mb-2">Forage (Tata)</p><p class="text-xs text-gray-400 mb-4 flex-grow">Predicting delinquency, EDA, reporting.</p><a href="https://drive.google.com/file/d/1cozguVbOLPwmfr9eEw6HKRrgCnCr-Y1U/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Mastering AI Agents Bootcamp</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Building smart conversational agents.</p><a href="https://drive.google.com/file/d/15avf_5mwNPSZhASrt-fwFJoiOiRnq1xL/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Brand Management with Generative AI</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">AI in marketing and asset generation.</p><a href="https://drive.google.com/file/d/1eaWMKr_lIwUWIXzNY7U7gHPZCgjef07q/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Vibe Coding with Vercel v0</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">From Idea to MVP via AI UI generation.</p><a href="https://drive.google.com/file/d/16CiAcadw1uOchWgYbEi2Pd4xmG7h5MWp/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                </div>
+        </div>
+        <div class="cert-carousel-wrapper mb-4">
+            <div class="cert-track">
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Cloud Computing Fundamentals</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cloud architecture & cloud concepts.</p><a href="https://drive.google.com/file/d/1CUd9Y-Z1AkSaeLwLLFrViNcWaBjwP94v/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Job Application Essentials</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Professional development and readiness.</p><a href="https://drive.google.com/file/d/1vQxPx-1VWOpwzDkyNHGFIe8KfI45A5Hd/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Project Management Fundamentals</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Agile frameworks & team coordination.</p><a href="https://drive.google.com/file/d/1WA8eiE7tt6l-l4eeUoCMVdHL9fQo_wxn/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Intro to Generative AI Concepts</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">LLMs, foundational generative models.</p><a href="https://drive.google.com/file/d/1ZUZr4wbSS8cfLki6UAgU7vq5awFTXPYd/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Introduction to AI Concepts</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Machine learning fundamentals.</p><a href="https://drive.google.com/file/d/1BQq6rZsDJhkuF-7WCSSJ4QsdrA06lqbJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Core Architectural Components of Azure</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Azure infrastructure and deployment.</p><a href="https://drive.google.com/file/d/1zlOdWilwifa_i8IeTeQ4ecfmQB_2Sge4/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Describe Cloud Computing</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cloud hosting, VMs, and scaling basics.</p><a href="https://drive.google.com/file/d/1DdJqfRyZ_lDYBJ60f6FAPDsmk25RMIeb/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Describe Cloud Service Types</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">IaaS, PaaS, SaaS architectures.</p><a href="https://drive.google.com/file/d/1GHUqZKKsIBwxrPhHNtgxXzzj3o2tVr92/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Benefits of using Cloud Services</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">High availability, security & agility.</p><a href="https://drive.google.com/file/d/1r2fZ8AUFWujGIos0uk6ZUz_eRag3AhgJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">GenAI Powered Data Analytics Job Simulation</h4><p class="text-xs text-primary font-semibold mb-2">Forage (Tata)</p><p class="text-xs text-gray-400 mb-4 flex-grow">Predicting delinquency, EDA, reporting.</p><a href="https://drive.google.com/file/d/1cozguVbOLPwmfr9eEw6HKRrgCnCr-Y1U/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Mastering AI Agents Bootcamp</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Building smart conversational agents.</p><a href="https://drive.google.com/file/d/15avf_5mwNPSZhASrt-fwFJoiOiRnq1xL/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Brand Management with Generative AI</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">AI in marketing and asset generation.</p><a href="https://drive.google.com/file/d/1eaWMKr_lIwUWIXzNY7U7gHPZCgjef07q/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Vibe Coding with Vercel v0</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">From Idea to MVP via AI UI generation.</p><a href="https://drive.google.com/file/d/16CiAcadw1uOchWgYbEi2Pd4xmG7h5MWp/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <!-- duplicates -->
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Cloud Computing Fundamentals</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cloud architecture & cloud concepts.</p><a href="https://drive.google.com/file/d/1CUd9Y-Z1AkSaeLwLLFrViNcWaBjwP94v/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Job Application Essentials</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Professional development and readiness.</p><a href="https://drive.google.com/file/d/1vQxPx-1VWOpwzDkyNHGFIe8KfI45A5Hd/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Project Management Fundamentals</h4><p class="text-xs text-primary font-semibold mb-2">IBM SkillsBuild</p><p class="text-xs text-gray-400 mb-4 flex-grow">Agile frameworks & team coordination.</p><a href="https://drive.google.com/file/d/1WA8eiE7tt6l-l4eeUoCMVdHL9fQo_wxn/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Intro to Generative AI Concepts</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">LLMs, foundational generative models.</p><a href="https://drive.google.com/file/d/1ZUZr4wbSS8cfLki6UAgU7vq5awFTXPYd/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Introduction to AI Concepts</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Machine learning fundamentals.</p><a href="https://drive.google.com/file/d/1BQq6rZsDJhkuF-7WCSSJ4QsdrA06lqbJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Core Architectural Components of Azure</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Azure infrastructure and deployment.</p><a href="https://drive.google.com/file/d/1zlOdWilwifa_i8IeTeQ4ecfmQB_2Sge4/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Describe Cloud Computing</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cloud hosting, VMs, and scaling basics.</p><a href="https://drive.google.com/file/d/1DdJqfRyZ_lDYBJ60f6FAPDsmk25RMIeb/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Describe Cloud Service Types</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">IaaS, PaaS, SaaS architectures.</p><a href="https://drive.google.com/file/d/1GHUqZKKsIBwxrPhHNtgxXzzj3o2tVr92/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Benefits of using Cloud Services</h4><p class="text-xs text-primary font-semibold mb-2">Microsoft</p><p class="text-xs text-gray-400 mb-4 flex-grow">High availability, security & agility.</p><a href="https://drive.google.com/file/d/1r2fZ8AUFWujGIos0uk6ZUz_eRag3AhgJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">GenAI Powered Data Analytics Job Simulation</h4><p class="text-xs text-primary font-semibold mb-2">Forage (Tata)</p><p class="text-xs text-gray-400 mb-4 flex-grow">Predicting delinquency, EDA, reporting.</p><a href="https://drive.google.com/file/d/1cozguVbOLPwmfr9eEw6HKRrgCnCr-Y1U/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Mastering AI Agents Bootcamp</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Building smart conversational agents.</p><a href="https://drive.google.com/file/d/15avf_5mwNPSZhASrt-fwFJoiOiRnq1xL/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Brand Management with Generative AI</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">AI in marketing and asset generation.</p><a href="https://drive.google.com/file/d/1eaWMKr_lIwUWIXzNY7U7gHPZCgjef07q/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Vibe Coding with Vercel v0</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">From Idea to MVP via AI UI generation.</p><a href="https://drive.google.com/file/d/16CiAcadw1uOchWgYbEi2Pd4xmG7h5MWp/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
             </div>
-
-            <div class="cert-carousel-wrapper mt-2">
-                <div class="cert-track cert-track-rtl">
-                    <!-- Row 2 original -->
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Vibe Coding Camp: GitHub Copilot, Cursor</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Mastering AI IDEs & code generation.</p><a href="https://drive.google.com/file/d/1VicCtv_y7gjhgYIooE78ysuL6NurjWbl/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Photoshop AI for Creatives</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Guide to generative visual tools.</p><a href="https://drive.google.com/file/d/1D-CCbKGCWGiGQsh3ybZahLRMy_sBFWm6/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Lovable AI: Complete Guide</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Vibe coding application workflows.</p><a href="https://drive.google.com/file/d/1yxjuSQsLgF5GazbXCK-RJr37hhYfG_yw/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Windsurf for Beginners</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">AI Coding IDE crash course.</p><a href="https://drive.google.com/file/d/1s4oQp1pvVP1m7toCZw_wKgS0qCfky3jg/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI for Cloud Infrastructure</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Automating AWS environments.</p><a href="https://drive.google.com/file/d/1vaiqIO4hAVaS3p3T7n6KWfM5wxzZr8hJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Intro to Model Context Protocol</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic</p><p class="text-xs text-gray-400 mb-4 flex-grow">MCP architectures for IDEs & Agents.</p><a href="https://drive.google.com/file/d/1hSyTIRSAW49wGGuaSwfYlhkNoS-njWDg/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Claude with the Anthropic API</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic</p><p class="text-xs text-gray-400 mb-4 flex-grow">Building robust applications with Claude.</p><a href="https://drive.google.com/file/d/1l_4VD-ZY5ne_WPCDggmY_iBzdSA4Kvdw/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI Fluency: Framework & Foundations</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic / UCC</p><p class="text-xs text-gray-400 mb-4 flex-grow">Core AI literacy & evaluation frameworks.</p><a href="https://drive.google.com/file/d/1K5FaTGwzrF3ErPtSg9wlm7-kt9IHhe_T/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI Fluency for Students</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic / UCC</p><p class="text-xs text-gray-400 mb-4 flex-grow">Applied AI safety and usage.</p><a href="https://drive.google.com/file/d/1t9UB5o9Z0UwQSz_RjePMbod-cPqmXD6K/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Introduction to Psychology</h4><p class="text-xs text-primary font-semibold mb-2">NPTEL (SWAYAM)</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cognitive processing & user behavior.</p><a href="https://drive.google.com/file/d/1ovxAc16RDlDgV97HgkEGO6b5Vna0O_C1/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Fundamentals of AI Agents</h4><p class="text-xs text-primary font-semibold mb-2">Hugging Face</p><p class="text-xs text-gray-400 mb-4 flex-grow">Autonomous model routing & tasks.</p><a href="https://drive.google.com/file/d/130Me3WDDDDB1yVpqUp9lHrt88wkbia7g/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Zoho Young Creator Program</h4><p class="text-xs text-primary font-semibold mb-2">Zoho</p><p class="text-xs text-gray-400 mb-4 flex-grow">App development & logic creation.</p><a href="https://drive.google.com/file/d/18JEWGXARW0A6Xuxhs3Aa4NWS0QRK5zi3/view?usp=sharing" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <!-- Row 2 duplicate for seamless loop -->
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Vibe Coding Camp: GitHub Copilot, Cursor</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Mastering AI IDEs & code generation.</p><a href="https://drive.google.com/file/d/1VicCtv_y7gjhgYIooE78ysuL6NurjWbl/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Photoshop AI for Creatives</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Guide to generative visual tools.</p><a href="https://drive.google.com/file/d/1D-CCbKGCWGiGQsh3ybZahLRMy_sBFWm6/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Lovable AI: Complete Guide</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Vibe coding application workflows.</p><a href="https://drive.google.com/file/d/1yxjuSQsLgF5GazbXCK-RJr37hhYfG_yw/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Windsurf for Beginners</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">AI Coding IDE crash course.</p><a href="https://drive.google.com/file/d/1s4oQp1pvVP1m7toCZw_wKgS0qCfky3jg/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI for Cloud Infrastructure</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Automating AWS environments.</p><a href="https://drive.google.com/file/d/1vaiqIO4hAVaS3p3T7n6KWfM5wxzZr8hJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Intro to Model Context Protocol</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic</p><p class="text-xs text-gray-400 mb-4 flex-grow">MCP architectures for IDEs & Agents.</p><a href="https://drive.google.com/file/d/1hSyTIRSAW49wGGuaSwfYlhkNoS-njWDg/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Claude with the Anthropic API</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic</p><p class="text-xs text-gray-400 mb-4 flex-grow">Building robust applications with Claude.</p><a href="https://drive.google.com/file/d/1l_4VD-ZY5ne_WPCDggmY_iBzdSA4Kvdw/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI Fluency: Framework & Foundations</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic / UCC</p><p class="text-xs text-gray-400 mb-4 flex-grow">Core AI literacy & evaluation frameworks.</p><a href="https://drive.google.com/file/d/1K5FaTGwzrF3ErPtSg9wlm7-kt9IHhe_T/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI Fluency for Students</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic / UCC</p><p class="text-xs text-gray-400 mb-4 flex-grow">Applied AI safety and usage.</p><a href="https://drive.google.com/file/d/1t9UB5o9Z0UwQSz_RjePMbod-cPqmXD6K/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Introduction to Psychology</h4><p class="text-xs text-primary font-semibold mb-2">NPTEL (SWAYAM)</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cognitive processing & user behavior.</p><a href="https://drive.google.com/file/d/1ovxAc16RDlDgV97HgkEGO6b5Vna0O_C1/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Fundamentals of AI Agents</h4><p class="text-xs text-primary font-semibold mb-2">Hugging Face</p><p class="text-xs text-gray-400 mb-4 flex-grow">Autonomous model routing & tasks.</p><a href="https://drive.google.com/file/d/130Me3WDDDDB1yVpqUp9lHrt88wkbia7g/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                    <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Zoho Young Creator Program</h4><p class="text-xs text-primary font-semibold mb-2">Zoho</p><p class="text-xs text-gray-400 mb-4 flex-grow">App development & logic creation.</p><a href="https://drive.google.com/file/d/18JEWGXARW0A6Xuxhs3Aa4NWS0QRK5zi3/view?usp=sharing" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
-                </div>
+        </div>
+        <div class="cert-carousel-wrapper mt-2">
+            <div class="cert-track cert-track-rtl">
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Vibe Coding Camp: GitHub Copilot, Cursor</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Mastering AI IDEs & code generation.</p><a href="https://drive.google.com/file/d/1VicCtv_y7gjhgYIooE78ysuL6NurjWbl/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Photoshop AI for Creatives</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Guide to generative visual tools.</p><a href="https://drive.google.com/file/d/1D-CCbKGCWGiGQsh3ybZahLRMy_sBFWm6/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Lovable AI: Complete Guide</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Vibe coding application workflows.</p><a href="https://drive.google.com/file/d/1yxjuSQsLgF5GazbXCK-RJr37hhYfG_yw/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Windsurf for Beginners</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">AI Coding IDE crash course.</p><a href="https://drive.google.com/file/d/1s4oQp1pvVP1m7toCZw_wKgS0qCfky3jg/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI for Cloud Infrastructure</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Automating AWS environments.</p><a href="https://drive.google.com/file/d/1vaiqIO4hAVaS3p3T7n6KWfM5wxzZr8hJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Intro to Model Context Protocol</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic</p><p class="text-xs text-gray-400 mb-4 flex-grow">MCP architectures for IDEs & Agents.</p><a href="https://drive.google.com/file/d/1hSyTIRSAW49wGGuaSwfYlhkNoS-njWDg/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Claude with the Anthropic API</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic</p><p class="text-xs text-gray-400 mb-4 flex-grow">Building robust applications with Claude.</p><a href="https://drive.google.com/file/d/1l_4VD-ZY5ne_WPCDggmY_iBzdSA4Kvdw/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI Fluency: Framework & Foundations</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic / UCC</p><p class="text-xs text-gray-400 mb-4 flex-grow">Core AI literacy & evaluation frameworks.</p><a href="https://drive.google.com/file/d/1K5FaTGwzrF3ErPtSg9wlm7-kt9IHhe_T/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI Fluency for Students</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic / UCC</p><p class="text-xs text-gray-400 mb-4 flex-grow">Applied AI safety and usage.</p><a href="https://drive.google.com/file/d/1t9UB5o9Z0UwQSz_RjePMbod-cPqmXD6K/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Introduction to Psychology</h4><p class="text-xs text-primary font-semibold mb-2">NPTEL (SWAYAM)</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cognitive processing & user behavior.</p><a href="https://drive.google.com/file/d/1ovxAc16RDlDgV97HgkEGO6b5Vna0O_C1/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Fundamentals of AI Agents</h4><p class="text-xs text-primary font-semibold mb-2">Hugging Face</p><p class="text-xs text-gray-400 mb-4 flex-grow">Autonomous model routing & tasks.</p><a href="https://drive.google.com/file/d/130Me3WDDDDB1yVpqUp9lHrt88wkbia7g/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Zoho Young Creator Program</h4><p class="text-xs text-primary font-semibold mb-2">Zoho</p><p class="text-xs text-gray-400 mb-4 flex-grow">App development & logic creation.</p><a href="https://drive.google.com/file/d/18JEWGXARW0A6Xuxhs3Aa4NWS0QRK5zi3/view?usp=sharing" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <!-- duplicates -->
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Vibe Coding Camp: GitHub Copilot, Cursor</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Mastering AI IDEs & code generation.</p><a href="https://drive.google.com/file/d/1VicCtv_y7gjhgYIooE78ysuL6NurjWbl/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Photoshop AI for Creatives</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Guide to generative visual tools.</p><a href="https://drive.google.com/file/d/1D-CCbKGCWGiGQsh3ybZahLRMy_sBFWm6/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Lovable AI: Complete Guide</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Vibe coding application workflows.</p><a href="https://drive.google.com/file/d/1yxjuSQsLgF5GazbXCK-RJr37hhYfG_yw/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Windsurf for Beginners</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">AI Coding IDE crash course.</p><a href="https://drive.google.com/file/d/1s4oQp1pvVP1m7toCZw_wKgS0qCfky3jg/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI for Cloud Infrastructure</h4><p class="text-xs text-primary font-semibold mb-2">Udemy</p><p class="text-xs text-gray-400 mb-4 flex-grow">Automating AWS environments.</p><a href="https://drive.google.com/file/d/1vaiqIO4hAVaS3p3T7n6KWfM5wxzZr8hJ/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Intro to Model Context Protocol</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic</p><p class="text-xs text-gray-400 mb-4 flex-grow">MCP architectures for IDEs & Agents.</p><a href="https://drive.google.com/file/d/1hSyTIRSAW49wGGuaSwfYlhkNoS-njWDg/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Claude with the Anthropic API</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic</p><p class="text-xs text-gray-400 mb-4 flex-grow">Building robust applications with Claude.</p><a href="https://drive.google.com/file/d/1l_4VD-ZY5ne_WPCDggmY_iBzdSA4Kvdw/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI Fluency: Framework & Foundations</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic / UCC</p><p class="text-xs text-gray-400 mb-4 flex-grow">Core AI literacy & evaluation frameworks.</p><a href="https://drive.google.com/file/d/1K5FaTGwzrF3ErPtSg9wlm7-kt9IHhe_T/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">AI Fluency for Students</h4><p class="text-xs text-primary font-semibold mb-2">Anthropic / UCC</p><p class="text-xs text-gray-400 mb-4 flex-grow">Applied AI safety and usage.</p><a href="https://drive.google.com/file/d/1t9UB5o9Z0UwQSz_RjePMbod-cPqmXD6K/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Introduction to Psychology</h4><p class="text-xs text-primary font-semibold mb-2">NPTEL (SWAYAM)</p><p class="text-xs text-gray-400 mb-4 flex-grow">Cognitive processing & user behavior.</p><a href="https://drive.google.com/file/d/1ovxAc16RDlDgV97HgkEGO6b5Vna0O_C1/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Fundamentals of AI Agents</h4><p class="text-xs text-primary font-semibold mb-2">Hugging Face</p><p class="text-xs text-gray-400 mb-4 flex-grow">Autonomous model routing & tasks.</p><a href="https://drive.google.com/file/d/130Me3WDDDDB1yVpqUp9lHrt88wkbia7g/view?usp=drive_link" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
+                <div class="cert-card"><h4 class="font-bold text-white text-sm mb-1 leading-snug">Zoho Young Creator Program</h4><p class="text-xs text-primary font-semibold mb-2">Zoho</p><p class="text-xs text-gray-400 mb-4 flex-grow">App development & logic creation.</p><a href="https://drive.google.com/file/d/18JEWGXARW0A6Xuxhs3Aa4NWS0QRK5zi3/view?usp=sharing" class="text-xs font-semibold text-gray-300 hover:text-white mt-auto flex items-center"><i class="fas fa-external-link-alt mr-1"></i> View Credential</a></div>
             </div>
         </div>
     </section>
 
     <!-- EDUCATION -->
-    <section class="py-16 sm:py-20 bg-cardBg/30 border-y border-primary/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-16 sm:py-20 bg-cardBg/30 border-y border-primary/10 w-full">
+        <div class="section-inner">
             <h2 class="text-2xl sm:text-3xl font-bold mb-8 sm:mb-10 text-white">Education</h2>
             <div class="space-y-6">
                 <div class="bg-bgMain p-5 sm:p-6 rounded-xl border-l-4 border-primary">
@@ -530,11 +519,9 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="py-24 sm:py-28 bg-bgMain border-t border-primary/10">
-        <div class="max-w-3xl mx-auto px-4 text-center">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-5 tracking-tight">
-                Let's Build Something Great
-            </h2>
+    <section id="contact" class="py-24 sm:py-28 bg-bgMain border-t border-primary/10 w-full">
+        <div class="section-inner text-center">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-5 tracking-tight">Let's Build Something Great</h2>
             <p class="text-base sm:text-lg md:text-xl text-gray-400 max-w-xl mx-auto mb-10 leading-relaxed font-medium">
                 Open to opportunities in AI / Software / IoT roles. Let's discuss how my experience in shipping production AI systems can help your team.
             </p>
@@ -562,19 +549,11 @@
     </footer>
 
     <script>
-        // Mobile hamburger toggle
         const menuBtn = document.getElementById('menuBtn');
         const navLinks = document.getElementById('navLinks');
-
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu on nav link click
+        menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
         });
     </script>
 </body>
