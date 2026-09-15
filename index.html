@@ -9,12 +9,12 @@
     <meta name="author" content="Anusha Sundaramurthi">
     <link rel="canonical" href="https://anusha-sundaramurthi.github.io/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         *, *::before, *::after { box-sizing: border-box; }
         html, body { width: 100%; margin: 0; padding: 0; overflow-x: hidden; }
-        body { background-color: #0D1117; color: #F8FAFC; font-family: 'DM Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+        body { background-color: #0D1117; color: #F8FAFC; font-family: 'Space Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
 
         :root {
             --bg:           #0D1117;
@@ -31,6 +31,8 @@
             --cyan:         #00D4FF;
             --cyan-glow:    rgba(0,212,255,0.2);
             --cyan-subtle:  rgba(0,212,255,0.08);
+            --violet:       #A855F7;
+            --violet-subtle:rgba(168,85,247,0.1);
             --text:         #F8FAFC;
             --text-muted:   #A8B8CC;
             --text-faint:   #8899AA;
@@ -48,10 +50,11 @@
         .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
         @media (min-width: 768px) { .container { padding: 0 2.5rem; } }
 
-        /* NAV */
+        /* ── NAV ── */
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(13,17,23,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
-        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-        .nav-logo { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 0; }
+        .nav-right { display: flex; align-items: center; gap: 4px; }
+        .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.35rem; font-weight: 400; color: var(--text); letter-spacing: -0.02em; text-decoration: none; white-space: nowrap; line-height: 1; }
         .nav-logo span { color: var(--pink); }
         .nav-links { display: none; gap: 4px; }
         @media (min-width: 768px) { .nav-links { display: flex; } }
@@ -69,56 +72,198 @@
         #mobileNav a:last-child { border-bottom: none; }
         #mobileNav a:hover { color: var(--pink); }
 
-        /* HERO */
-        .hero { padding: 128px 0 88px; background: linear-gradient(135deg, #0D1117 0%, #0f0d1a 100%); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,0,128,0.07) 0%, transparent 70%); pointer-events: none; }
-        .hero::after { content: ''; position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0,212,255,0.05) 0%, transparent 70%); pointer-events: none; }
-        @media (min-width: 768px) { .hero { padding: 148px 0 108px; } }
-        .hero-grid { display: flex; flex-direction: column; gap: 48px; position: relative; z-index: 1; }
-        @media (min-width: 768px) { .hero-grid { flex-direction: row; align-items: center; } }
+        /* ── HERO ── */
+        .hero {
+            padding: 108px 0 60px;
+            background: linear-gradient(135deg, #0D1117 0%, #0f0d1a 100%);
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        /* dot-grid texture */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 28px 28px;
+            pointer-events: none;
+        }
+        /* pink glow top-right */
+        .hero-glow-pink {
+            position: absolute; top: -200px; right: -200px;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(255,0,128,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        /* cyan glow bottom-left */
+        .hero-glow-cyan {
+            position: absolute; bottom: -100px; left: -100px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        @media (min-width: 768px) { .hero { padding: 100px 0 48px; } }
+
+        .hero-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            position: relative;
+            z-index: 1;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+            .hero-grid { flex-direction: row; align-items: center; }
+        }
+
         .hero-left { flex: 1; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--pink-subtle); color: var(--pink); border: 1px solid rgba(255,0,128,0.3); border-radius: 999px; padding: 6px 14px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; }
+
+        /* location line */
+        .hero-location {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--text-faint); margin-bottom: 14px;
+        }
+        .hero-location::before { content: ''; display: inline-block; width: 28px; height: 1.5px; background: var(--pink); }
+        .hero-location .dot { color: var(--border-hover); margin: 0 4px; }
+
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--pink-subtle); color: var(--pink);
+            border: 1px solid rgba(255,0,128,0.3); border-radius: 999px;
+            padding: 5px 12px; font-size: 0.78rem; font-weight: 600; margin-bottom: 12px;
+        }
         .hero-badge i { font-size: 0.7rem; }
-        h1.hero-name { font-family: 'Syne', sans-serif; font-size: 2.75rem; font-weight: 800; color: var(--text); letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 8px; }
-        @media (min-width: 768px) { h1.hero-name { font-size: 3.5rem; } }
-        @media (min-width: 1024px) { h1.hero-name { font-size: 4rem; } }
-        .hero-role { font-size: 1.375rem; font-weight: 600; background: linear-gradient(90deg, var(--pink), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 0 0 20px; }
-        @media (min-width: 768px) { .hero-role { font-size: 1.75rem; } }
-        .hero-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.8; max-width: 560px; margin: 0 0 28px; }
-        .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+
+        h1.hero-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.3rem; font-weight: 400;
+            color: var(--text); letter-spacing: -0.04em;
+            line-height: 1.0; margin: 0 0 10px;
+        }
+        @media (min-width: 768px) { h1.hero-name { font-size: 4.05rem; } }
+        @media (min-width: 1024px) { h1.hero-name { font-size: 4.8rem; } }
+
+        .hero-name-last {
+            display: inline;
+            background: linear-gradient(90deg, var(--pink) 0%, var(--cyan) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-role {
+            font-size: 1.15rem; font-weight: 600;
+            color: var(--text-muted);
+            margin: 0 0 14px;
+            letter-spacing: 0.01em;
+        }
+        @media (min-width: 768px) { .hero-role { font-size: 1.35rem; } }
+
+        .hero-motto {
+            font-size: 1rem; font-style: italic; color: var(--text-muted);
+            border-left: 3px solid var(--pink); padding-left: 12px;
+            margin: 0 0 16px; line-height: 1.5;
+        }
+        .hero-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.7; max-width: 560px; margin: 0 0 16px; }
+
+        .hero-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
         .hero-tag { padding: 6px 14px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 999px; font-size: 0.8rem; font-weight: 500; color: var(--text-muted); transition: all 0.15s; }
         .hero-tag:hover { border-color: var(--pink); color: var(--pink); }
+
         .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
         .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--pink); color: white; border-radius: 10px; font-weight: 600; font-size: 0.9375rem; text-decoration: none; transition: all 0.2s; box-shadow: var(--shadow-pink); }
         .btn-primary:hover { background: var(--pink-light); transform: translateY(-2px); box-shadow: 0 12px 32px var(--pink-glow); }
         .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: transparent; color: var(--text-muted); border: 1.5px solid var(--border); border-radius: 10px; font-weight: 600; font-size: 0.9375rem; text-decoration: none; transition: all 0.2s; }
         .btn-secondary:hover { border-color: var(--pink); color: var(--pink); background: var(--pink-subtle); }
-        .hero-right { flex: 0 0 auto; width: 100%; max-width: 340px; }
 
-        /* STATS CARD */
-        .stats-card { background: var(--bg-card); border-radius: 16px; padding: 28px; box-shadow: var(--shadow-card); border: 1px solid var(--border); }
-        .stats-card h3 { font-size: 0.75rem; font-weight: 700; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 20px; }
-        .stat-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border-sub); }
-        .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .stat-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--pink-subtle); display: flex; align-items: center; justify-content: center; color: var(--pink); font-size: 0.875rem; flex-shrink: 0; border: 1px solid rgba(255,0,128,0.2); }
-        .stat-text strong { display: block; font-size: 1rem; font-weight: 700; color: var(--text); }
-        .stat-text span { font-size: 0.8rem; color: var(--text-muted); }
+        /* ── PHOTO ── */
+        .hero-right { flex: 0 0 auto; display: flex; justify-content: center; align-self: flex-start; margin-top: 70px; }
+        .hero-photo-wrap {
+            position: relative;
+            width: 200px; height: 200px;
+        }
+        @media (min-width: 768px) { .hero-photo-wrap { width: 240px; height: 240px; } }
+        @media (min-width: 1024px) { .hero-photo-wrap { width: 270px; height: 270px; } }
 
-        /* SECTIONS */
+        /* rotating glow ring */
+        .hero-photo-wrap::before {
+            content: '';
+            position: absolute; inset: -6px;
+            border-radius: 50%;
+            background: conic-gradient(var(--pink), var(--cyan), var(--pink));
+            animation: spin-slow 8s linear infinite;
+            z-index: 0;
+        }
+        /* white gap ring */
+        .hero-photo-wrap::after {
+            content: '';
+            position: absolute; inset: -2px;
+            border-radius: 50%;
+            background: var(--bg);
+            z-index: 1;
+        }
+        @keyframes spin-slow { to { transform: rotate(360deg); } }
+
+        .hero-photo {
+            position: relative; z-index: 2;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        /* ── STATS STRIP ── */
+        .stats-strip {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 36px 0;
+            position: relative; z-index: 1;
+        }
+        .stats-inner {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px 0;
+        }
+        @media (min-width: 640px) { .stats-inner { grid-template-columns: repeat(4, 1fr); } }
+        .stat-col {
+            text-align: center;
+            padding: 0 16px;
+            border-right: 1px solid var(--border-sub);
+        }
+        .stat-col:last-child { border-right: none; }
+        @media (max-width: 639px) {
+            .stat-col:nth-child(2) { border-right: none; }
+            .stat-col:nth-child(3) { border-right: 1px solid var(--border-sub); }
+        }
+        .stat-num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem; font-weight: 400;
+            background: linear-gradient(135deg, var(--pink), var(--pink-light));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .stat-label { font-size: 0.8rem; font-weight: 500; color: var(--text-faint); line-height: 1.4; }
+
+        /* ── SECTIONS ── */
         .section { padding: 80px 0; }
         @media (min-width: 768px) { .section { padding: 96px 0; } }
         .section-alt { background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
         .section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--pink); margin-bottom: 8px; }
-        .section-title { font-family: 'Syne', sans-serif; font-size: 1.875rem; font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin: 0 0 8px; }
+        .section-title { font-family: 'DM Serif Display', serif; font-size: 1.875rem; font-weight: 400; color: var(--text); letter-spacing: -0.02em; margin: 0 0 8px; }
         @media (min-width: 768px) { .section-title { font-size: 2.25rem; } }
         .section-sub { font-size: 1rem; color: var(--text-muted); max-width: 560px; margin: 0 0 48px; line-height: 1.7; }
 
-        /* EXPERIENCE */
+        /* ── EXPERIENCE ── */
         .exp-card { background: var(--bg-card); border-radius: 16px; padding: 28px 32px; box-shadow: var(--shadow-card); border: 1px solid var(--border); margin-bottom: 16px; transition: all 0.25s; }
         .exp-card:hover { box-shadow: var(--shadow-hover); border-color: var(--border-hover); transform: translateY(-2px); }
         .exp-header { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; }
         @media (min-width: 640px) { .exp-header { flex-direction: row; align-items: flex-start; justify-content: space-between; } }
-        .exp-title { font-family: 'Syne', sans-serif; font-size: 1.125rem; font-weight: 700; color: var(--text); margin: 0; }
+        .exp-title { font-family: 'DM Serif Display', serif; font-size: 1.125rem; font-weight: 400; color: var(--text); margin: 0; }
         .exp-company { font-size: 0.9375rem; font-weight: 600; color: var(--pink); margin: 2px 0 0; }
         .exp-badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; background: var(--bg-elevated); color: var(--text-muted); border-radius: 999px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; border: 1px solid var(--border); }
         .exp-badge.current { background: rgba(16,185,129,0.1); color: var(--success); border-color: rgba(16,185,129,0.3); }
@@ -129,26 +274,52 @@
         .exp-chips { display: flex; flex-wrap: wrap; gap: 6px; }
         .chip { padding: 4px 10px; background: var(--bg-elevated); border-radius: 6px; font-size: 0.75rem; font-weight: 500; color: var(--text-faint); border: 1px solid var(--border); }
 
-        /* SKILLS */
+        /* ── SKILLS ── */
         .skills-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
         @media (min-width: 640px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (min-width: 1024px) { .skills-grid { grid-template-columns: repeat(4, 1fr); } }
         .skill-card { background: var(--bg-card); border-radius: 14px; padding: 22px; box-shadow: var(--shadow-card); border: 1px solid var(--border); transition: all 0.25s; }
         .skill-card:hover { box-shadow: var(--shadow-hover); border-color: var(--border-hover); transform: translateY(-3px); }
         .skill-card-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--pink-subtle); display: flex; align-items: center; justify-content: center; color: var(--pink); font-size: 1.1rem; margin-bottom: 14px; border: 1px solid rgba(255,0,128,0.2); }
-        .skill-card h3 { font-family: 'Syne', sans-serif; font-size: 0.9375rem; font-weight: 700; color: var(--text); margin: 0 0 14px; }
+        .skill-card h3 { font-family: 'DM Serif Display', serif; font-size: 0.9375rem; font-weight: 400; color: var(--text); margin: 0 0 14px; }
         .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
         .skill-tag { padding: 4px 10px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; font-size: 0.75rem; font-weight: 500; color: var(--text-faint); transition: all 0.15s; cursor: default; }
         .skill-tag:hover { background: var(--pink-subtle); border-color: rgba(255,0,128,0.4); color: var(--pink); }
 
-        /* PROJECTS */
+        /* ── PROJECTS ── */
         .projects-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
         @media (min-width: 768px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+
         .project-card { background: var(--bg-card); border-radius: 16px; padding: 24px 28px; box-shadow: var(--shadow-card); border: 1px solid var(--border); display: flex; flex-direction: column; transition: all 0.25s; position: relative; overflow: hidden; }
         .project-card:hover { box-shadow: var(--shadow-hover); border-color: var(--border-hover); transform: translateY(-3px); }
         .project-card.featured { border-top: 2px solid var(--pink); }
-        .project-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; background: var(--pink-subtle); color: var(--pink); border-radius: 999px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; border: 1px solid rgba(255,0,128,0.3); width: fit-content; }
-        .project-card h3 { font-family: 'Syne', sans-serif; font-size: 1.0625rem; font-weight: 700; color: var(--text); margin: 0 0 14px; line-height: 1.35; }
+
+        /* color-coded category badges */
+        .project-badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 3px 10px; border-radius: 999px;
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.06em; margin-bottom: 10px; width: fit-content;
+            border: 1px solid;
+        }
+        .project-badge.ai {
+            background: var(--pink-subtle); color: var(--pink);
+            border-color: rgba(255,0,128,0.3);
+        }
+        .project-badge.automation {
+            background: var(--cyan-subtle); color: var(--cyan);
+            border-color: rgba(0,212,255,0.3);
+        }
+        .project-badge.frontend {
+            background: var(--violet-subtle); color: var(--violet);
+            border-color: rgba(168,85,247,0.3);
+        }
+        .project-badge.iot {
+            background: rgba(16,185,129,0.1); color: var(--success);
+            border-color: rgba(16,185,129,0.3);
+        }
+
+        .project-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.0625rem; font-weight: 400; color: var(--text); margin: 0 0 14px; line-height: 1.35; }
         .project-detail { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin: 0 0 6px; }
         .project-detail strong { color: var(--cyan); font-weight: 600; }
         .project-footer { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border-sub); }
@@ -157,7 +328,7 @@
         .project-link { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 10px 16px; background: var(--pink); color: white; border-radius: 8px; font-size: 0.875rem; font-weight: 600; text-decoration: none; transition: all 0.2s; }
         .project-link:hover { background: var(--pink-light); box-shadow: var(--shadow-pink); }
 
-        /* CERTS */
+        /* ── CERTS ── */
         .cert-carousel-wrapper { overflow: hidden; position: relative; width: 100%; }
         .cert-carousel-wrapper::before, .cert-carousel-wrapper::after { content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none; }
         .cert-carousel-wrapper::before { left: 0; background: linear-gradient(to right, var(--bg-card), transparent); }
@@ -175,35 +346,188 @@
         .cert-card a { font-size: 0.75rem; font-weight: 600; color: var(--text-faint); text-decoration: none; display: flex; align-items: center; gap: 4px; }
         .cert-card a:hover { color: var(--pink); }
 
-        /* EDUCATION */
+        /* ── EDUCATION ── */
         .edu-card { background: var(--bg-card); border-radius: 14px; padding: 24px 28px; box-shadow: var(--shadow-card); border: 1px solid var(--border); border-left: 4px solid var(--pink); margin-bottom: 14px; transition: all 0.25s; }
         .edu-card:hover { border-color: var(--pink); box-shadow: var(--shadow-hover); }
         .edu-card.secondary { border-left-color: var(--border); }
-        .edu-card h3 { font-family: 'Syne', sans-serif; font-size: 1.0625rem; font-weight: 700; color: var(--text); margin: 0 0 4px; }
+        .edu-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.0625rem; font-weight: 400; color: var(--text); margin: 0 0 4px; }
         .edu-card .school { font-size: 0.9rem; font-weight: 600; color: var(--cyan); margin: 0 0 10px; }
         .edu-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 6px; }
         .edu-note { font-size: 0.825rem; color: var(--text-muted); margin: 8px 0 0; }
 
-        /* CONTACT */
-        .contact-section { background: linear-gradient(135deg, #0d0614 0%, #130a1f 100%); padding: 96px 0; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
-        .contact-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(255,0,128,0.08) 0%, transparent 70%); pointer-events: none; }
-        .contact-section h2 { font-family: 'Syne', sans-serif; font-size: 2.25rem; font-weight: 800; color: var(--text); letter-spacing: -0.03em; margin: 0 0 12px; position: relative; }
-        @media (min-width: 768px) { .contact-section h2 { font-size: 2.75rem; } }
-        .contact-section p { font-size: 1.0625rem; color: var(--text-muted); max-width: 520px; margin: 0 auto 36px; line-height: 1.7; position: relative; }
-        .contact-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; background: var(--pink); color: white; border-radius: 10px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: all 0.2s; box-shadow: var(--shadow-pink); margin-bottom: 40px; position: relative; }
-        .contact-btn:hover { background: var(--pink-light); transform: translateY(-2px); box-shadow: 0 12px 40px var(--pink-glow); }
-        .social-links { display: flex; justify-content: center; gap: 16px; position: relative; }
-        .social-links a { width: 44px; height: 44px; border-radius: 50%; background: var(--bg-elevated); display: flex; align-items: center; justify-content: center; color: var(--text-muted); text-decoration: none; font-size: 1.125rem; transition: all 0.2s; border: 1px solid var(--border); }
-        .social-links a:hover { background: var(--pink-subtle); border-color: var(--pink); color: var(--pink); transform: translateY(-2px); }
+        /* ── CONTACT ── */
+        .contact-section {
+            background: #0a0d14;
+            border-top: 1px solid var(--border);
+            position: relative; overflow: hidden;
+        }
+        .contact-section::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 28px 28px; pointer-events: none;
+        }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
-        /* GITHUB STRIP */
+        .contact-body {
+            display: grid; grid-template-columns: 1fr;
+            gap: 32px; padding: 56px 0 64px;
+            position: relative; z-index: 1;
+        }
+        @media (min-width: 900px) { .contact-body { grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; } }
+
+        /* ── LEFT: profile card + info rows ── */
+        .contact-left { display: flex; flex-direction: column; gap: 16px; }
+
+        .cprofile-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 18px 20px;
+            display: flex; align-items: center; gap: 14px;
+        }
+        .cprofile-img {
+            width: 54px; height: 54px; border-radius: 50%;
+            border: 2px solid var(--pink);
+            object-fit: cover; object-position: center top; flex-shrink: 0;
+        }
+        .cprofile-name { font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 0.9375rem; color: var(--text); }
+        .cprofile-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+        .cprofile-motto { font-size: 0.72rem; font-style: italic; color: var(--pink); margin-top: 4px; }
+        .cprofile-loc { font-size: 0.72rem; color: var(--text-faint); margin-top: 3px; display: flex; align-items: center; gap: 4px; }
+
+        .cinfo-row {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 14px 18px;
+            display: flex; align-items: center; gap: 14px;
+            transition: border-color 0.2s;
+        }
+        .cinfo-row:hover { border-color: var(--pink); }
+        .cinfo-icon {
+            width: 36px; height: 36px; border-radius: 9px; flex-shrink: 0;
+            background: var(--pink-subtle); border: 1px solid rgba(255,0,128,0.2);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--pink); font-size: 0.85rem;
+        }
+        .cinfo-text { flex: 1; min-width: 0; }
+        .cinfo-label {
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--text-faint); margin-bottom: 3px;
+        }
+        .cinfo-value {
+            font-size: 0.875rem; font-weight: 600; color: var(--text);
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .cinfo-value small { font-size: 0.75rem; font-weight: 400; color: var(--text-muted); display: block; margin-top: 1px; }
+        .cinfo-btn {
+            flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px;
+            padding: 5px 12px; border-radius: 7px; font-size: 0.72rem; font-weight: 700;
+            text-decoration: none; cursor: pointer; border: 1.5px solid var(--border);
+            background: var(--bg-elevated); color: var(--text-muted);
+            transition: all 0.15s;
+        }
+        .cinfo-btn:hover { border-color: var(--pink); color: var(--pink); background: var(--pink-subtle); }
+        .cinfo-btn.primary { background: var(--pink); color: white; border-color: var(--pink); }
+        .cinfo-btn.primary:hover { background: var(--pink-light); }
+
+        /* ── RIGHT: message form card ── */
+        .contact-form-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 28px 28px 24px;
+        }
+        .cform-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; }
+        .cform-title-wrap { display: flex; align-items: center; gap: 10px; }
+        .cform-icon {
+            width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
+            background: var(--pink-subtle); border: 1px solid rgba(255,0,128,0.25);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--pink); font-size: 0.9rem;
+        }
+        .cform-title { font-family: 'DM Serif Display', serif; font-size: 1.125rem; font-weight: 400; color: var(--text); margin: 0; }
+        .cform-subtitle { font-size: 0.72rem; color: var(--success); margin-top: 2px; display: flex; align-items: center; gap: 5px; }
+        .cform-subtitle::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--success); animation: pulse 2s infinite; display: inline-block; }
+        .cform-direct {
+            font-size: 0.72rem; font-weight: 600; color: var(--text-faint);
+            border: 1px solid var(--border); border-radius: 7px; padding: 5px 10px;
+            text-decoration: none; transition: all 0.15s; white-space: nowrap;
+        }
+        .cform-direct:hover { color: var(--pink); border-color: var(--pink); background: var(--pink-subtle); }
+
+        .cform-purpose-label {
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--text-faint); margin-bottom: 8px;
+        }
+        .cform-purposes { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+        .cform-purpose-btn {
+            padding: 6px 14px; border-radius: 7px; font-size: 0.78rem; font-weight: 600;
+            border: 1.5px solid var(--border); background: var(--bg-elevated);
+            color: var(--text-muted); cursor: pointer; transition: all 0.15s;
+        }
+        .cform-purpose-btn:hover, .cform-purpose-btn.active {
+            background: var(--pink); border-color: var(--pink); color: white;
+        }
+
+        .cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+        @media (max-width: 560px) { .cform-row { grid-template-columns: 1fr; } }
+        .cform-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+        .cform-field label {
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--text-faint);
+        }
+        .cform-field label .req { color: var(--pink); }
+        .cform-input, .cform-textarea {
+            background: var(--bg-elevated); border: 1.5px solid var(--border);
+            border-radius: 8px; padding: 10px 13px;
+            font-size: 0.875rem; color: var(--text); font-family: 'Space Grotesk', sans-serif;
+            transition: border-color 0.15s; outline: none; width: 100%;
+        }
+        .cform-input::placeholder, .cform-textarea::placeholder { color: var(--text-faint); }
+        .cform-input:focus, .cform-textarea:focus { border-color: var(--pink); background: rgba(255,0,128,0.04); }
+        .cform-textarea { resize: vertical; min-height: 100px; }
+
+        .cform-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+        .cform-privacy { font-size: 0.72rem; color: var(--text-faint); display: flex; align-items: center; gap: 5px; }
+        .cform-submit {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 11px 22px; background: var(--pink); color: white;
+            border: none; border-radius: 9px; font-size: 0.875rem; font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif; cursor: pointer;
+            transition: all 0.2s; box-shadow: var(--shadow-pink); letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+        .cform-submit:hover { background: var(--pink-light); transform: translateY(-1px); box-shadow: 0 8px 24px var(--pink-glow); }
+
+        /* footer nav */
+        .contact-footer-nav {
+            border-top: 1px solid var(--border-sub); padding: 24px 0;
+            display: flex; flex-wrap: wrap; align-items: center;
+            justify-content: space-between; gap: 14px;
+            position: relative; z-index: 1;
+        }
+        .contact-footer-links { display: flex; flex-wrap: wrap; gap: 4px; }
+        .contact-footer-links a {
+            font-size: 0.72rem; font-weight: 500; color: var(--text-faint);
+            text-decoration: none; padding: 4px 10px;
+            border-radius: 6px; transition: all 0.15s;
+        }
+        .contact-footer-links a:hover { color: var(--pink); background: var(--pink-subtle); }
+        .contact-footer-copy { font-size: 0.72rem; color: var(--text-faint); }
+
+        /* ── GITHUB STRIP ── */
         .gh-strip { background: var(--bg-elevated); padding: 56px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .gh-strip h2 { font-family: 'Syne', sans-serif; font-size: 1.625rem; font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin: 0 0 8px; }
+        .gh-strip h2 { font-family: 'DM Serif Display', serif; font-size: 1.625rem; font-weight: 400; color: var(--text); letter-spacing: -0.02em; margin: 0 0 8px; }
         .gh-strip p { font-size: 0.9375rem; color: var(--text-muted); max-width: 520px; margin: 0 auto 24px; }
         .gh-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: transparent; color: var(--text); border: 1.5px solid var(--border); border-radius: 10px; font-weight: 600; font-size: 0.9375rem; text-decoration: none; transition: all 0.2s; }
         .gh-btn:hover { border-color: var(--pink); color: var(--pink); background: var(--pink-subtle); }
 
-        footer { background: var(--bg); border-top: 1px solid var(--border); padding: 20px; text-align: center; font-size: 0.8125rem; color: var(--text-faint); }
+
+        /* ── SCROLL FADE-IN ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -212,15 +536,18 @@
     <nav>
         <div class="container">
             <div class="nav-inner">
-                <span class="nav-logo"></span>
-                <div class="nav-links">
-                    <a href="#about">About</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#certifications">Certifications</a>
+                <a href="#about" class="nav-logo">Anusha <span>Sundaramurthi</span></a>
+                <div class="nav-right">
+                    <div class="nav-links">
+                        <a href="#about">About</a>
+                        <a href="#experience">Experience</a>
+                        <a href="#skills">Skills</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#certifications">Certifications</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    <a href="mailto:anushasundaramurthi@gmail.com" class="nav-cta"><i class="fas fa-paper-plane"></i> Hire Me</a>
                 </div>
-                <a href="mailto:anushasundaramurthi@gmail.com" class="nav-cta"><i class="fas fa-paper-plane"></i> Hire Me</a>
                 <button id="mobileMenuBtn" aria-label="Menu">
                     <span></span><span></span><span></span>
                 </button>
@@ -238,12 +565,21 @@
 
     <!-- HERO -->
     <header id="about" class="hero">
+        <div class="hero-glow-pink"></div>
+        <div class="hero-glow-cyan"></div>
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-left">
-                    <div class="hero-badge"><i class="fas fa-circle" style="color:#22C55E;font-size:7px;"></i> Open to Opportunities</div>
-                    <h1 class="hero-name">Anusha Sundaramurthi</h1>
-                    <p class="hero-role">AI & Automation Engineer</p>
+                    <div class="hero-location">
+                        Puducherry, India <span class="dot">·</span> Open to Opportunities
+                    </div>
+                    <div class="hero-badge"><i class="fas fa-circle" style="color:#22C55E;font-size:7px;"></i> Available Now</div>
+                    <h1 class="hero-name">
+                        Anusha
+                        <span class="hero-name-last">Sundaramurthi</span>
+                    </h1>
+                    <p class="hero-role">AI &amp; Automation Engineer</p>
+                    <p class="hero-motto">"I didn't stop at the textbook."</p>
                     <p class="hero-desc">
                         I design agency-wide workflow automation systems (n8n, REST APIs, webhooks) and production-grade AI/LLM applications — RAG pipelines, FastAPI backends, LangGraph multi-agent systems. Shipped 13 automations, cut API latency 35%, and eliminated LLM inference costs by 100%.
                     </p>
@@ -263,41 +599,37 @@
                     </div>
                 </div>
                 <div class="hero-right">
-                    <div class="stats-card">
-                        <h3>Impact Highlights</h3>
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-bolt"></i></div>
-                            <div class="stat-text">
-                                <strong>13 Workflows Shipped</strong>
-                                <span>40–60% reduction in operational effort</span>
-                            </div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            <div class="stat-text">
-                                <strong>35% Latency Reduction</strong>
-                                <span>Optimized FastAPI production backend</span>
-                            </div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
-                            <div class="stat-text">
-                                <strong>100% LLM Cost Eliminated</strong>
-                                <span>Local RAG with offline Gemma3 via Ollama</span>
-                            </div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-clock"></i></div>
-                            <div class="stat-text">
-                                <strong>2–4 hrs/day Saved</strong>
-                                <span>Automated reporting & routing workflows</span>
-                            </div>
-                        </div>
+                    <div class="hero-photo-wrap">
+                        <img src="IMG_6809.jpg" alt="Anusha Sundaramurthi" class="hero-photo">
                     </div>
                 </div>
             </div>
         </div>
     </header>
+
+    <!-- STATS STRIP -->
+    <div class="stats-strip">
+        <div class="container">
+            <div class="stats-inner">
+                <div class="stat-col">
+                    <div class="stat-num">13</div>
+                    <div class="stat-label">Workflows Shipped<br>40–60% effort reduction</div>
+                </div>
+                <div class="stat-col">
+                    <div class="stat-num">35%</div>
+                    <div class="stat-label">API Latency Cut<br>FastAPI production backend</div>
+                </div>
+                <div class="stat-col">
+                    <div class="stat-num">100%</div>
+                    <div class="stat-label">LLM Cost Eliminated<br>Local RAG via Ollama</div>
+                </div>
+                <div class="stat-col">
+                    <div class="stat-num">4hrs</div>
+                    <div class="stat-label">Daily Time Saved<br>Automated reporting</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- EXPERIENCE -->
     <section id="experience" class="section">
@@ -306,7 +638,7 @@
             <h2 class="section-title">Where I've Worked</h2>
             <p class="section-sub">Building production automation systems and AI backends across industry roles.</p>
 
-            <div class="exp-card">
+            <div class="exp-card fade-up">
                 <div class="exp-header">
                     <div>
                         <h3 class="exp-title">Associate Automation Specialist</h3>
@@ -331,7 +663,7 @@
                 </div>
             </div>
 
-            <div class="exp-card">
+            <div class="exp-card fade-up">
                 <div class="exp-header">
                     <div>
                         <h3 class="exp-title">AI Engineer Intern</h3>
@@ -365,7 +697,7 @@
             <h2 class="section-title">Technical Arsenal</h2>
             <p class="section-sub">Full-stack AI engineering across LLMs, automation, cloud deployment, and vector databases.</p>
             <div class="skills-grid">
-                <div class="skill-card">
+                <div class="skill-card fade-up">
                     <div class="skill-card-icon"><i class="fas fa-code"></i></div>
                     <h3>Languages & Backend</h3>
                     <div class="skill-tags">
@@ -379,7 +711,7 @@
                         <span class="skill-tag">React</span>
                     </div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card fade-up">
                     <div class="skill-card-icon"><i class="fas fa-brain"></i></div>
                     <h3>AI & LLMs</h3>
                     <div class="skill-tags">
@@ -394,7 +726,7 @@
                         <span class="skill-tag">Scikit-learn</span>
                     </div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card fade-up">
                     <div class="skill-card-icon"><i class="fas fa-server"></i></div>
                     <h3>Cloud & Databases</h3>
                     <div class="skill-tags">
@@ -409,7 +741,7 @@
                         <span class="skill-tag">Git / CI/CD</span>
                     </div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card fade-up">
                     <div class="skill-card-icon"><i class="fas fa-cogs"></i></div>
                     <h3>Workflow Automation</h3>
                     <div class="skill-tags">
@@ -434,8 +766,8 @@
             <p class="section-sub">End-to-end applications from multi-agent systems to local RAG pipelines and full-stack AI tools.</p>
             <div class="projects-grid">
 
-                <div class="project-card featured">
-                    <div class="project-badge"><i class="fas fa-star" style="font-size:9px;"></i> Latest</div>
+                <div class="project-card featured fade-up">
+                    <div class="project-badge ai"><i class="fas fa-star" style="font-size:9px;"></i> Latest · AI / Multi-Agent</div>
                     <h3>Nuvex — Multi-Agent AI Shopping Assistant</h3>
                     <p class="project-detail"><strong>Problem:</strong> Fragmented e-commerce search with no conversational purchase flow.</p>
                     <p class="project-detail"><strong>Solution:</strong> Coordinator-specialist multi-agent architecture using LangGraph and GPT-4.1 across 4 specialist agents.</p>
@@ -455,8 +787,8 @@
                     </div>
                 </div>
 
-                <div class="project-card featured">
-                    <div class="project-badge"><i class="fas fa-star" style="font-size:9px;"></i> Featured</div>
+                <div class="project-card featured fade-up">
+                    <div class="project-badge ai"><i class="fas fa-star" style="font-size:9px;"></i> Featured · AI / RAG</div>
                     <h3>RAG Customer Support Chatbot</h3>
                     <p class="project-detail"><strong>Problem:</strong> High cloud LLM costs and hallucination risks in customer support.</p>
                     <p class="project-detail"><strong>Solution:</strong> End-to-end RAG pipeline on AWS using LangChain, LlamaIndex, and FAISS Top-K=8 retrieval.</p>
@@ -475,7 +807,8 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card fade-up">
+                    <div class="project-badge ai">AI / NLP</div>
                     <h3>ResuMate — AI Resume Analyzer</h3>
                     <p class="project-detail"><strong>Problem:</strong> Job seekers struggle to bypass ATS filters and tailor resumes efficiently.</p>
                     <p class="project-detail"><strong>Solution:</strong> NLP-powered ATS engine with semantic similarity and Claude API, exposed via REST API.</p>
@@ -492,7 +825,8 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card fade-up">
+                    <div class="project-badge ai">AI / Multi-Modal</div>
                     <h3>Multi-Modal AI Agent</h3>
                     <p class="project-detail"><strong>Problem:</strong> Complex queries requiring routing across text, image, and video generation models.</p>
                     <p class="project-detail"><strong>Solution:</strong> Intent classification agent routing prompts across 3 AI modalities via GPU-accelerated Google Colab + FastAPI proxy.</p>
@@ -509,10 +843,11 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card fade-up">
+                    <div class="project-badge ai">AI / NLP</div>
                     <h3>Emotion Analyser Web App</h3>
                     <p class="project-detail"><strong>Problem:</strong> Need for high-speed, lightweight text sentiment analysis without heavy LLM calls.</p>
-                    <p class="project-detail"><strong>Solution:</strong> NLP classifier using <code style="font-size:0.75rem;background:#F1F5F9;padding:1px 5px;border-radius:4px;">all-MiniLM-L6-v2</code> embeddings detecting 7 distinct emotional states.</p>
+                    <p class="project-detail"><strong>Solution:</strong> NLP classifier using <code style="font-size:0.75rem;background:rgba(255,255,255,0.08);padding:1px 5px;border-radius:4px;">all-MiniLM-L6-v2</code> embeddings detecting 7 distinct emotional states.</p>
                     <p class="project-detail"><strong>Outcome:</strong> Sub-100ms real-time inference latency via FastAPI.</p>
                     <div class="project-footer">
                         <div class="project-chips">
@@ -526,7 +861,8 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card fade-up">
+                    <div class="project-badge automation">Automation / DevOps</div>
                     <h3>LLM Chat Studio</h3>
                     <p class="project-detail"><strong>Problem:</strong> Fragmented experience testing and comparing outputs across multiple AI providers.</p>
                     <p class="project-detail"><strong>Solution:</strong> Unified multi-provider AI chat interface with Docker containerization and session management.</p>
@@ -543,7 +879,8 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card fade-up">
+                    <div class="project-badge automation">Automation / Tooling</div>
                     <h3>Free Agentic IDE</h3>
                     <p class="project-detail"><strong>Problem:</strong> Missing context-aware AI refactoring capabilities in standard lightweight editors.</p>
                     <p class="project-detail"><strong>Solution:</strong> Context-aware coding environment with semantic indexing, AI chat, and MCP Server integrations.</p>
@@ -560,7 +897,8 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card fade-up">
+                    <div class="project-badge ai">AI / RAG</div>
                     <h3>RAG Based AI Assistant</h3>
                     <p class="project-detail"><strong>Problem:</strong> Need for a context-aware AI assistant that answers accurately from private documents without cloud LLM dependency.</p>
                     <p class="project-detail"><strong>Solution:</strong> Built a fully local RAG-powered AI assistant with document ingestion, semantic chunking, and conversational retrieval.</p>
@@ -578,7 +916,8 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card fade-up">
+                    <div class="project-badge iot">IoT / Systems</div>
                     <h3>Smart Irrigation Advisor</h3>
                     <p class="project-detail"><strong>Problem:</strong> Inefficient agricultural water management causing crop stress and resource waste.</p>
                     <p class="project-detail"><strong>Solution:</strong> IoT system tracking real-time soil moisture and weather to recommend dynamic watering schedules.</p>
@@ -595,7 +934,8 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card fade-up">
+                    <div class="project-badge frontend">Frontend / Utility</div>
                     <h3>WEC CGPA Calculator</h3>
                     <p class="project-detail"><strong>Problem:</strong> Students lacked a dedicated, university-specific tool to accurately model and project their 8-semester grading trajectory.</p>
                     <p class="project-detail"><strong>Solution:</strong> Modern, responsive frontend utility built specifically for the CSE curriculum with precise credit weighting.</p>
@@ -683,7 +1023,7 @@
             <div class="section-label">Education</div>
             <h2 class="section-title">Academic Background</h2>
             <div style="margin-top:32px;">
-                <div class="edu-card">
+                <div class="edu-card fade-up">
                     <h3>B.Tech — Computer Science & Engineering</h3>
                     <p class="school">Women's Engineering College, Puducherry</p>
                     <div class="edu-meta">
@@ -691,9 +1031,9 @@
                         <span><i class="fas fa-chart-line" style="margin-right:5px;"></i> CGPA: 6.55 overall (7.8+ in AI/ML & CS core)</span>
                     </div>
                     <p class="edu-note">Coursework: Machine Learning, Artificial Intelligence, DSA, OS, DBMS, Computer Networks</p>
-                    <p class="edu-note" style="margin-top:8px;"><strong style="color:var(--navy);">Leadership:</strong> President — Cyber Security & Ethical Hacking Club (50+ members) · Social Media Manager (30% engagement growth) · Best Student Volunteer Award — Har Ghar Tiranga</p>
+                    <p class="edu-note" style="margin-top:8px;"><strong style="color:var(--pink);">Leadership:</strong> President — Cyber Security & Ethical Hacking Club (50+ members) · Social Media Manager (30% engagement growth) · Best Student Volunteer Award — Har Ghar Tiranga</p>
                 </div>
-                <div class="edu-card secondary">
+                <div class="edu-card secondary fade-up">
                     <h3>Higher Secondary — Computer Science</h3>
                     <p class="school">Immaculate Heart of Mary Higher Secondary School</p>
                     <div class="edu-meta">
@@ -707,35 +1047,183 @@
 
     <!-- CONTACT -->
     <section id="contact" class="contact-section">
-        <div class="container" style="text-align:center;">
-            <h2>Let's Build Something Great</h2>
-            <p>Open to AI Engineer, Automation Engineer, and Software roles. Let's discuss how production AI systems and automation can accelerate your team.</p>
-            <a href="mailto:anushasundaramurthi@gmail.com" class="contact-btn">
-                <i class="fas fa-paper-plane"></i> Say Hello
-            </a>
-            <div class="social-links">
-                <a href="mailto:anushasundaramurthi@gmail.com" aria-label="Email">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                </a>
-                <a href="https://linkedin.com/in/anusha-sundaramurthi1728" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </a>
-                <a href="https://github.com/anusha-sundaramurthi" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                </a>
+        <div class="container">
+            <div class="contact-body">
+
+                <!-- LEFT: profile + contact info rows -->
+                <div class="contact-left">
+
+                    <!-- profile card -->
+                    <div class="cprofile-card">
+                        <img src="IMG_6809.jpg" alt="Anusha Sundaramurthi" class="cprofile-img">
+                        <div>
+                            <div class="cprofile-name">Anusha Sundaramurthi</div>
+                            <div class="cprofile-sub">AI &amp; Automation Engineer · B.Tech CSE 2022–2026</div>
+                            <div class="cprofile-motto">"I didn't stop at the textbook."</div>
+                            <div class="cprofile-loc">
+                                <i class="fas fa-map-marker-alt" style="font-size:0.6rem;color:var(--pink)"></i>
+                                Puducherry, India · Open to on-site, hybrid &amp; remote
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- email -->
+                    <div class="cinfo-row">
+                        <div class="cinfo-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="cinfo-text">
+                            <div class="cinfo-label">Email Address</div>
+                            <div class="cinfo-value">anushasundaramurthi@gmail.com</div>
+                        </div>
+                        <a href="mailto:anushasundaramurthi@gmail.com" class="cinfo-btn primary">
+                            <i class="fas fa-paper-plane" style="font-size:0.65rem"></i> Mail
+                        </a>
+                    </div>
+
+                    <!-- linkedin -->
+                    <div class="cinfo-row">
+                        <div class="cinfo-icon"><i class="fab fa-linkedin-in"></i></div>
+                        <div class="cinfo-text">
+                            <div class="cinfo-label">Professional Network</div>
+                            <div class="cinfo-value">Anusha Sundaramurthi</div>
+                        </div>
+                        <a href="https://linkedin.com/in/anusha-sundaramurthi1728" target="_blank" rel="noopener noreferrer" class="cinfo-btn">
+                            <i class="fas fa-arrow-up-right-from-square" style="font-size:0.6rem"></i> Profile
+                        </a>
+                    </div>
+
+                    <!-- github -->
+                    <div class="cinfo-row">
+                        <div class="cinfo-icon"><i class="fab fa-github"></i></div>
+                        <div class="cinfo-text">
+                            <div class="cinfo-label">Source Code &amp; Repositories</div>
+                            <div class="cinfo-value">anusha-sundaramurthi</div>
+                        </div>
+                        <a href="https://github.com/anusha-sundaramurthi" target="_blank" rel="noopener noreferrer" class="cinfo-btn">
+                            <i class="fas fa-arrow-up-right-from-square" style="font-size:0.6rem"></i> GitHub
+                        </a>
+                    </div>
+
+                    <!-- location -->
+                    <div class="cinfo-row">
+                        <div class="cinfo-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="cinfo-text">
+                            <div class="cinfo-label">Geographical Base</div>
+                            <div class="cinfo-value">Puducherry (Pondicherry), India
+                                <small>Open to on-site, hybrid, and remote worldwide roles</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT: send a message form card -->
+                <div class="contact-right">
+                    <div class="contact-form-card">
+
+                        <div class="cform-header">
+                            <div class="cform-title-wrap">
+                                <div class="cform-icon"><i class="fas fa-comment-dots"></i></div>
+                                <div>
+                                    <h2 class="cform-title">Send a Message</h2>
+                                    <div class="cform-subtitle">Fast response · Monitored daily</div>
+                                </div>
+                            </div>
+                            <a href="mailto:anushasundaramurthi@gmail.com" class="cform-direct">Direct to Anusha</a>
+                        </div>
+
+                        <div class="cform-purpose-label">Purpose of Contact</div>
+                        <div class="cform-purposes">
+                            <button class="cform-purpose-btn active" onclick="setPurpose(this)">Hiring</button>
+                            <button class="cform-purpose-btn" onclick="setPurpose(this)">Engineering Project</button>
+                            <button class="cform-purpose-btn" onclick="setPurpose(this)">General Discussion</button>
+                        </div>
+
+                        <form id="contactForm" onsubmit="sendMail(event)">
+                            <div class="cform-row">
+                                <div class="cform-field">
+                                    <label>Your Name <span class="req">*</span></label>
+                                    <input class="cform-input" type="text" name="name" placeholder="Your full name" required>
+                                </div>
+                                <div class="cform-field">
+                                    <label>Your Email <span class="req">*</span></label>
+                                    <input class="cform-input" type="email" name="email" placeholder="name@company.com" required>
+                                </div>
+                            </div>
+                            <div class="cform-field">
+                                <label>Organization / Affiliation</label>
+                                <input class="cform-input" type="text" name="org" placeholder="Your company or university">
+                            </div>
+                            <div class="cform-field">
+                                <label>Message Details <span class="req">*</span></label>
+                                <textarea class="cform-textarea" name="message" placeholder="Describe your project, team opportunity, timeline, or technical requirements…" required></textarea>
+                            </div>
+                            <div class="cform-footer">
+                                <span class="cform-privacy"><i class="fas fa-lock" style="font-size:0.65rem;color:var(--pink)"></i> Privacy protected. Direct communication only.</span>
+                                <button type="submit" class="cform-submit">Send Message <i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- footer -->
+            <div class="contact-footer-nav" style="justify-content:center;">
+                <span class="contact-footer-copy">&copy; <span id="yr"></span> Anusha Sundaramurthi</span>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Anusha Sundaramurthi. Designed for performance & scale.</p>
-    </footer>
-
     <script>
+        /* mobile menu */
         const btn = document.getElementById('mobileMenuBtn');
         const nav = document.getElementById('mobileNav');
         btn.addEventListener('click', () => nav.classList.toggle('open'));
         nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+        /* dynamic year */
+        document.getElementById('yr').textContent = new Date().getFullYear();
+
+        /* purpose pill toggle */
+        function setPurpose(el) {
+            document.querySelectorAll('.cform-purpose-btn').forEach(b => b.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        /* form → mailto */
+        function sendMail(e) {
+            e.preventDefault();
+            const f = e.target;
+            const senderName  = f.querySelector('[name="name"]').value.trim();
+            const senderEmail = f.querySelector('[name="email"]').value.trim();
+            const senderOrg   = f.querySelector('[name="org"]').value.trim();
+            const senderMsg   = f.querySelector('[name="message"]').value.trim();
+            const purpose     = document.querySelector('.cform-purpose-btn.active')?.textContent.trim() || '';
+            const subject = encodeURIComponent('[Portfolio] ' + purpose + ' — ' + senderName);
+            const body = encodeURIComponent(
+                'Name: '         + senderName  + '\n' +
+                'Email: '        + senderEmail + '\n' +
+                'Organisation: ' + (senderOrg || '—') + '\n\n' +
+                senderMsg
+            );
+            window.location.href = 'mailto:anushasundaramurthi@gmail.com?subject=' + subject + '&body=' + body;
+        }
+
+        /* scroll fade-in */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-up').forEach((el, i) => {
+            el.style.transitionDelay = (i % 4) * 80 + 'ms';
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
